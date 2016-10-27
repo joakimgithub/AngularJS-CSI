@@ -1,5 +1,5 @@
 'use strict';
-app.controller('intCustomerController', ['$scope',  'intCustomerService', function ($scope, intCustomerService) {
+app.controller('intCustomerController', ['$scope',  'intCustomerService', 'modalPopUpService', function ($scope, intCustomerService, modalPopUpService) {
 
     $scope.customers = [];
 

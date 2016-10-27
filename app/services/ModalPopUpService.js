@@ -1,5 +1,8 @@
 'use strict';
 app.factory('modalPopUpService', ['$uibModal', function ($uibModal) {
+    
+    var modalPopUpServiceFactory = {};
+    
     var modalDefaults = {
             backdrop: true,
             keyboard: true,
@@ -13,7 +16,7 @@ app.factory('modalPopUpService', ['$uibModal', function ($uibModal) {
             bodyText: 'Perform this action?'
         };
 
-    this.showModal = function (customModalDefaults, customModalOptions) {
+    var _showModal = function (customModalDefaults, customModalOptions) {
         if (!customModalDefaults) {
             customModalDefaults = {};
         }
@@ -21,7 +24,7 @@ app.factory('modalPopUpService', ['$uibModal', function ($uibModal) {
         return this.show(customModalDefaults, customModalOptions);
     };
 
-    this.show = function (customModalDefaults, customModalOptions) {
+    var _show = function (customModalDefaults, customModalOptions) {
         //Create temp objects to work with since we're in a singleton service
         var tempModalDefaults = {},
             tempModalOptions = {};
@@ -47,4 +50,9 @@ app.factory('modalPopUpService', ['$uibModal', function ($uibModal) {
         }
         return $uibModal.open(tempModalDefaults).result;
     };
+    
+    modalPopUpServiceFactory.showModal = _showModal;
+    modalPopUpServiceFactory.show = _show;
+
+    return modalPopUpServiceFactory;    
 }])

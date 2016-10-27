@@ -1,5 +1,5 @@
 'use strict';
-app.factory('intCustomerService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
+app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopUpService', function ($http, $uibModal, ngAuthSettings, modalPopUpService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
@@ -37,8 +37,8 @@ app.factory('intCustomerService', ['$http', 'ngAuthSettings', function ($http, n
                 bodyText: 'Are you sure you want to Copy this Customer?',
                 customer: newCustomer
             };
-        modalPopUpService.showModal(modalInsertDefaults, modalOptions).then(function (result) {
 
+        modalPopUpService.showModal(modalInsertDefaults, modalOptions).then(function (result) {
             return $http.post$http.post(url, customer); (serviceBase + 'api/AddCustomer', customer).then(function (results) {
                 return results;
             });

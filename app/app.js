@@ -1,5 +1,5 @@
 
-var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
 
 app.config(function ($routeProvider) {
 
