@@ -1,5 +1,5 @@
 
-var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
 
 app.config(function ($routeProvider) {
 
@@ -18,11 +18,6 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html"
     });
 
-    $routeProvider.when("/csis", {
-        controller: "csisController",
-        templateUrl: "/app/views/csis.html"
-    });
-
     $routeProvider.when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"
@@ -38,17 +33,25 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/associate.html"
     });
 
+    $routeProvider.when("/csis", {
+        controller: "csisController",
+        templateUrl: "/app/views/csis.html"
+    });
+
+    $routeProvider.when("/intCustomer", {
+        controller: "intCustomerController",
+        templateUrl: "/app/views/intCustomer.html"
+    });
+
     $routeProvider.when("/extCustomer", {
         controller: "extCustomerController",
         templateUrl: "/app/views/extCustomer.html"
     });
 
-
     $routeProvider.when("/extCsi", {
         controller: "extCsiController",
         templateUrl: "/app/views/extCsi.html"
     });
-
 
     $routeProvider.when("/extCSIListForCustomer", {
         controller: "extCSIListForCustomerController",
@@ -64,7 +67,7 @@ app.config(function ($routeProvider) {
 var serviceBase = 'http://A01C01101C/CsiServiceWT/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
-    clientId: 'ngAuthApp'
+    clientId: 'ngCsiApp'
 });
 
 app.config(function ($httpProvider) {

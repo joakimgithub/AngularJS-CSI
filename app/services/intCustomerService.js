@@ -9,7 +9,6 @@ app.factory('intCustomerService', ['$http', 'ngAuthSettings', function ($http, n
     // Get Customers
     // ************************
     var _getCustomerList = function () {
-
         return $http.get(serviceBase + 'api/GetCustomerList').then(function (results) {
             return results;
         });
@@ -29,7 +28,7 @@ app.factory('intCustomerService', ['$http', 'ngAuthSettings', function ($http, n
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/intCustomerView/intCustomerCopyModal.html'
+                templateUrl: '/app/views/intCustomerCopyModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -38,8 +37,7 @@ app.factory('intCustomerService', ['$http', 'ngAuthSettings', function ($http, n
                 bodyText: 'Are you sure you want to Copy this Customer?',
                 customer: newCustomer
             };
-
-        modalService.showModal(modalInsertDefaults, modalOptions).then(function (result) {
+        modalPopUpService.showModal(modalInsertDefaults, modalOptions).then(function (result) {
 
             return $http.post$http.post(url, customer); (serviceBase + 'api/AddCustomer', customer).then(function (results) {
                 return results;
@@ -48,7 +46,7 @@ app.factory('intCustomerService', ['$http', 'ngAuthSettings', function ($http, n
     };
 
     intCustomerServiceFactory.getCustomerList = _getCustomerList;
-    intCustomerServiceFactory.getCustomer = _copyCustomer;
+    intCustomerServiceFactory.copyCustomer = _copyCustomer;
 
     return intCustomerServiceFactory;
 }]);
