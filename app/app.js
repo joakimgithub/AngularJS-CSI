@@ -38,6 +38,23 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/associate.html"
     });
 
+    $routeProvider.when("/extCustomer", {
+        controller: "extCustomerController",
+        templateUrl: "/app/views/extCustomer.html"
+    });
+
+
+    $routeProvider.when("/extCsi", {
+        controller: "extCsiController",
+        templateUrl: "/app/views/extCsi.html"
+    });
+
+
+    $routeProvider.when("/extCSIListForCustomer", {
+        controller: "extCSIListForCustomerController",
+        templateUrl: "/app/views/extCSIListForCustomer.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 
 });
