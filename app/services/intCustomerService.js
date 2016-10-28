@@ -24,7 +24,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
         // ************************
         // Modal for Customer copy
         // ************************
-            modalInsertDefaults = {
+            modalDefaults = {
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
@@ -38,15 +38,124 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 customer: newCustomer
             };
 
-        modalPopUpService.showModal(modalInsertDefaults, modalOptions).then(function (result) {
-            return $http.post$http.post(url, customer); (serviceBase + 'api/AddCustomer', customer).then(function (results) {
+        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.post(serviceBase + 'api/AddCustomer', customer).then(function (results) {
                 return results;
             });
         });
     };
 
+    // ************************
+    // Add Customer
+    // ************************
+    var _addCustomer = function (customer) {
+        var customer = $scope.newEmptyCustomer(),
+        // ************************
+        // Modal for Add Customer
+        // ************************
+            modalDefaults = {
+                backdrop: true,
+                keyboard: true,
+                modalFade: true,
+                templateUrl: '/app/views/intCustomerInsertModal.html'
+            },
+            modalOptions = {
+                closeButtonText: 'Cancel',
+                actionButtonText: 'Insert Customer',
+                headerText: 'Insert',
+                bodyText: 'Are you sure you want to insert this Customer?',
+                customer: customer
+            };
+
+        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.post(serviceBase + 'api/AddCustomer', customer).then(function (results) {
+                return results;
+            });
+        });;
+    };
+
+    // ************************
+    // update Customer
+    // ************************
+    var _updateCustomer = function (customer) {
+        var updateCustomer = {Id: customer.Id, CustomerCode: customer.CustomerCode, CustomerName: customer.CustomerName, CustomerEmail: customer.CustomerEmail, Active: customer.Active};
+        var customerToUpd = customer.Id + ' ' + customer.CustomerCode,
+
+            // ************************
+            // Modal for Customer update
+            // ************************
+            modalDefaults = {
+                backdrop: true,
+                keyboard: true,
+                modalFade: true,
+                templateUrl: '/app/views/intCustomerUpdateModal.html'
+            },
+            modalOptions = {
+                closeButtonText: 'Cancel',
+                actionButtonText: 'Update Customer',
+                headerText: 'Update ' + customerToUpd + '?',
+                bodyText: 'Are you sure you want to update this Customer?',
+                customer: updateCustomer
+            };
+
+        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.put(serviceBase + 'api/ModifyCustomer/' + customer.Id, customer).then(function (results) {
+                return results;
+            });
+        });
+    };
+
+    // ************************
+    // delete Customer
+    // ************************
+    var _deleteCustomer = function (customer) {
+        var customerToDel = customer.Id + ' ' + customer.CustomerCode,
+
+        // ************************
+        // Modal for Customer delete
+        // ************************
+            modalDefaults = {
+                backdrop: true,
+                keyboard: true,
+                modalFade: true,
+                templateUrl: '/app/views/intCustomerDeleteModal.html'
+            },
+            modalOptions = {
+                closeButtonText: 'Cancel',
+                actionButtonText: 'Delete Customer',
+                headerText: 'Delete ' + customerToDel + '?',
+                bodyText: 'Are you sure you want to delete this Customer?',
+                customer: customer
+            };
+
+        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.delete(serviceBase + 'api/ModifyCustomer/' + customer.Id, customer).then(function (results) {
+                return results;
+            });
+        });
+    };
+
+
+    var newEmptyCustomer = function () {
+        var customer = {
+            Id: null,
+            CustomerCode: null,
+            CustomerName: null,
+            CustomerEmail: null,
+            Active: null,
+            Created: null,
+            CreatedBy: null,
+            Updated: null,
+            UpdatedBy: null
+        };
+        return customer;
+    };
+
     intCustomerServiceFactory.getCustomerList = _getCustomerList;
     intCustomerServiceFactory.copyCustomer = _copyCustomer;
+    intCustomerServiceFactory.addCustomer = _addCustomer;
+    intCustomerServiceFactory.updateCustomer = _updateCustomer;
+    intCustomerServiceFactory.deleteCustomer = _deleteCustomer;
 
     return intCustomerServiceFactory;
 }]);
