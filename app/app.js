@@ -51,6 +51,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/intCustomer.html"
     });
 
+    $routeProvider.when("/intCsi", {
+        controller: "intCsiController",
+        templateUrl: "/app/views/intCsi.html"
+    });
+
     $routeProvider.when("/extCustomer", {
         controller: "extCustomerController",
         templateUrl: "/app/views/extCustomer.html"

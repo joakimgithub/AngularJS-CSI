@@ -129,7 +129,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
             };
 
         modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.delete(serviceBase + 'api/ModifyCustomer/' + customer.Id, customer).then(function (results) {
+            return $http.delete(serviceBase + 'api/DeleteCustomer/' + customer.Id).then(function (results) {
                 return results;
             });
         });
