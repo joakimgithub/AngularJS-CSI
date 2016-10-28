@@ -4,6 +4,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
     $scope.loginData = {
         userName: "",
         password: "",
+        isAdmin:  false,
         useRefreshTokens: false
     };
 

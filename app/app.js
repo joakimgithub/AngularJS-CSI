@@ -1,6 +1,14 @@
 
 var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
 
+
+var serviceBase = 'http://A01C01101C/CsiServiceWT/';
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'ngCsiApp'
+});
+
+
 app.config(function ($routeProvider) {
 
     $routeProvider.when("/home", {
@@ -62,18 +70,15 @@ app.config(function ($routeProvider) {
 
 });
 
-//var serviceBase = 'http://localhost:26264/';
-//var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
-var serviceBase = 'http://A01C01101C/CsiServiceWT/';
-app.constant('ngAuthSettings', {
-    apiServiceBaseUri: serviceBase,
-    clientId: 'ngCsiApp'
-});
 
+/*Configuration blocks - get executed during the provider registrations and configuration phase. Only providers and constants can be injected into configuration blocks. This is to prevent accidental instantiation of services before they have been fully configured.*/
 app.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
 });
 
+
+/*Run blocks - get executed after the injector is created and are used to kickstart the application. Only instances and constants can be injected into run blocks. This is to prevent further system configuration during application run time.
+Run blocks are the closest thing in Angular to the main method. A run block is the code which needs to run to kickstart the application. It is executed after all of the service have been configured and the injector has been created.*/
 app.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);

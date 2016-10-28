@@ -1,3 +1,7 @@
+/*
+This AngularJS service will be responsible for signing up new users, log-in/log-out registered users, and store the generated token in client local storage so this token can be sent with each request to access secure resources on the back-end API, the code for AuthService
+*/
+
 'use strict';
 app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', function ($http, $q, localStorageService, ngAuthSettings) {
 
@@ -7,14 +11,15 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     var _authentication = {
         isAuth: false,
         userName: "",
+        isAdmin:  false,
         useRefreshTokens: false
     };
 
-    var _externalAuthData = {
+/*    var _externalAuthData = {
         provider: "",
         userName: "",
         externalAccessToken: ""
-    };
+    };*/
 
     var _saveRegistration = function (registration) {
 
@@ -47,6 +52,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.useRefreshTokens = loginData.useRefreshTokens;
+            _authentication.isAdmin = false; //TODO get from server
 
             deferred.resolve(response);
 
@@ -66,7 +72,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = false;
-
+        _authentication.isAdmin = false;
     };
 
     var _fillAuthData = function () {
@@ -76,10 +82,12 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAuth = true;
             _authentication.userName = authData.userName;
             _authentication.useRefreshTokens = authData.useRefreshTokens;
+            _authentication.isAdmin = false;
         }
 
     };
 
+/*
     var _refreshToken = function () {
         var deferred = $q.defer();
 
@@ -108,8 +116,9 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         return deferred.promise;
     };
+*/
 
-    var _obtainAccessToken = function (externalData) {
+/*    var _obtainAccessToken = function (externalData) {
 
         var deferred = $q.defer();
 
@@ -120,6 +129,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAuth = true;
             _authentication.userName = response.userName;
             _authentication.useRefreshTokens = false;
+            _authentication.isAdmin = false;
 
             deferred.resolve(response);
 
@@ -130,9 +140,9 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         return deferred.promise;
 
-    };
+    };*/
 
-    var _registerExternal = function (registerExternalData) {
+/*    var _registerExternal = function (registerExternalData) {
 
         var deferred = $q.defer();
 
@@ -143,6 +153,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAuth = true;
             _authentication.userName = response.userName;
             _authentication.useRefreshTokens = false;
+            _authentication.isAdmin = false;
 
             deferred.resolve(response);
 
@@ -153,18 +164,18 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         return deferred.promise;
 
-    };
+    };*/
 
     authServiceFactory.saveRegistration = _saveRegistration;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
     authServiceFactory.authentication = _authentication;
-    authServiceFactory.refreshToken = _refreshToken;
+    //authServiceFactory.refreshToken = _refreshToken;
 
-    authServiceFactory.obtainAccessToken = _obtainAccessToken;
-    authServiceFactory.externalAuthData = _externalAuthData;
-    authServiceFactory.registerExternal = _registerExternal;
+    //authServiceFactory.obtainAccessToken = _obtainAccessToken;
+    //authServiceFactory.externalAuthData = _externalAuthData;
+    //authServiceFactory.registerExternal = _registerExternal;
 
     return authServiceFactory;
 }]);
