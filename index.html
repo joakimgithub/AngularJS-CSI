@@ -24,8 +24,9 @@
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-ng-show="authentication.isAuth"> <a>Welcome {{authentication.userName}} ({{role}})</a></li>
-                    <li data-ng-show="authentication.isAdmin"><a href="#/intCustomer">Customers</a></li>
+                    <li data-ng-hide="!authentication.isAuth"> <a>Welcome {{authentication.userName}} ({{role}})</a></li>
+                    <li data-ng-hide="!authentication.isAdmin"><a href="#/intCustomer">Customers</a></li>
+                    <li data-ng-hide="authentication.isAdmin"><a href="#/extCSIListForCustomer">Customers</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
