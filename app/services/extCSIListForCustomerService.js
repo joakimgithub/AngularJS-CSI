@@ -8,7 +8,7 @@ app.factory('extCSIListForCustomerService', ['$http', 'ngAuthSettings','localSto
 
     var _getCSIListForCustomer = function () {
 
-        return $http.get(serviceBase + 'api/GetCSIListForCustomer/id').then(function (results) {
+        return $http.get(serviceBase + 'api/GetCSIListForCustomer/'+ id).then(function (results) {
             return results;//api/GetCSIListForCustomer/{id}
         });
     };

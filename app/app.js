@@ -2,7 +2,7 @@
 var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
 
 
-var serviceBase = 'http://A01C01263C/CsiServiceWT/';
+var serviceBase = 'http://A01C01101C/CsiServiceWT/';
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'ngCsiApp'
