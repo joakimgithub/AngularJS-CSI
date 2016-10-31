@@ -21,8 +21,8 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
             $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
             startTimer();
 
-        },
-         function (response) {
+        },function (response) {
+            debugger
              var errors = [];
              for (var key in response.data.modelState) {
                  for (var i = 0; i < response.data.modelState[key].length; i++) {
