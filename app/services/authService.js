@@ -13,7 +13,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         userName: "",
         useRefreshTokens: false,
         isAdmin:  false,
-        customerId: 1
+        customerId: null
     };
 
 /*    var _externalAuthData = {
@@ -45,16 +45,17 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         $http.post(serviceBase + 'Token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
             if (loginData.useRefreshTokens) {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true, isAdmin: response.isAdmin, customerId: 1});
+                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true, isAdmin: response.isAdmin, customerId: response.customerId});
             }
             else {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: response.isAdmin, customerId: 1});
+                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: response.isAdmin, customerId: response.customerId});
             }
+            debugger
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.useRefreshTokens = loginData.useRefreshTokens;
             _authentication.isAdmin = response.isAdmin;
-            _authentication.customerId = 1; //TODO get id from server
+            _authentication.customerId = response.customerId;
 
             deferred.resolve(response);
 
@@ -75,7 +76,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         _authentication.userName = "";
         _authentication.useRefreshTokens = false;
         _authentication.isAdmin = false;
-        _authentication.customerId = 1;
+        _authentication.customerId = null;
     };
 
     var _fillAuthData = function () {
@@ -86,7 +87,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.userName = authData.userName;
             _authentication.useRefreshTokens = authData.useRefreshTokens;
             _authentication.isAdmin = authData.isAdmin;
-            _authentication.customerId = 1;
+            _authentication.customerId = authData.customerId;
         }
 
     };
