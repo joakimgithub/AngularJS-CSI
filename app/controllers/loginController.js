@@ -4,8 +4,9 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
     $scope.loginData = {
         userName: "",
         password: "",
+        useRefreshTokens: false,
         isAdmin:  false,
-        useRefreshTokens: false
+        customerId: 0
     };
 
     $scope.message = "";
@@ -14,7 +15,10 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         authService.login($scope.loginData).then(function (response) {
 
-            $location.path('/intCustomer');
+            if($scope.loginData.isAdmin)
+                $location.path('/intCustomer');
+            else
+                $location.path('/extCSIListForCustomer');
 
         },
          function (err) {
@@ -22,7 +26,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
          });
     };
 
-    $scope.authExternalProvider = function (provider) {
+/*    $scope.authExternalProvider = function (provider) {
 
         var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
 
@@ -56,7 +60,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
                 var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
                 authService.obtainAccessToken(externalData).then(function (response) {
 
-                    $location.path('/csis');
+                    $location.path('/extCsi');
 
                 },
              function (err) {
@@ -65,5 +69,5 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
             }
 
         });
-    }
+    }*/
 }]);

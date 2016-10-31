@@ -7,9 +7,13 @@ app.controller('indexController', ['$scope', '$location', 'authService', functio
     }
 
     $scope.authentication = authService.authentication;
-    if($scope.authentication.isAdmin)
-        $scope.role = "Admin";
+    if($scope.authentication.isAuth) {
+        if($scope.authentication.isAdmin == true)
+            $scope.role = "Admin";
+        else
+            $scope.role = "User";
+    }
     else
-        $scope.role = "User";
+        $scope.role = "";
 
 }]);
