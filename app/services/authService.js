@@ -25,7 +25,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     var _saveRegistration = function (registration) {
 
         _logOut();
-debugger
+
         return $http.post(serviceBase + 'api/Account/Register', registration).then(function (response) {
             return response;
         });
@@ -50,7 +50,7 @@ debugger
             else {
                 localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: response.isAdmin, customerId: response.customerId});
             }
-            debugger
+
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.useRefreshTokens = loginData.useRefreshTokens;
