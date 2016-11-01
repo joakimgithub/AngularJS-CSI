@@ -7,5 +7,10 @@ app.controller('indexController', ['$scope', '$location', 'authService', functio
     }
 
     $scope.authentication = authService.authentication;
-
+    var auth = authService.authentication;
+    $scope.isLoggedInAndAdmin = false;
+    $scope.isLoggedInAndUser = false;
+    if (auth.isAdmin && auth.isAuth) $scope.isLoggedInAndAdmin = true;
+    var isLoggedInAndUser = false;
+    if (auth.isAdmin && auth.isAuth) $scope.isLoggedInAndUser = true;
 }]);
