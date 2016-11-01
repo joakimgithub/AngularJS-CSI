@@ -73,7 +73,7 @@ app.config(function ($routeProvider) {
 
     $routeProvider.when("/users", {
         controller: "usersController",
-        templateUrl: "/app/views/usersCustomer.html"
+        templateUrl: "/app/views/users.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/home" });

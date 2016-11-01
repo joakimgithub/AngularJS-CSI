@@ -5,14 +5,14 @@ app.factory('usersService', ['$http', 'ngAuthSettings', function ($http, ngAuthS
 
     var usersServiceFactory = {};
 
-    var _getUsersList = function () {
+    var _getUserList = function () {
 
         return $http.get(serviceBase + 'api/Account/UsersList').then(function (results) {
             return results;
         });
     };
 
-    usersServiceFactory.getUsersList = _getUsersList;
+    usersServiceFactory.getUserList = _getUserList;
 
     return usersServiceFactory;
 
