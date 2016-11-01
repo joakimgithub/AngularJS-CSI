@@ -1,5 +1,6 @@
 'use strict';
-app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', function ($scope, $location, authService, ngAuthSettings) {
+app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', 'localStorageService',
+                                   function ($scope, $location, authService, ngAuthSettings, localStorageService) {
 
     $scope.loginData = {
         userName: "",
@@ -15,7 +16,8 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         authService.login($scope.loginData).then(function (response) {
 
-            if($scope.loginData.isAdmin)
+            var authData = localStorageService.get('authorizationData');
+            if(authData.isAdmin)
                 $location.path('/intCustomer');
             else
                 $location.path('/extCSIListForCustomer');

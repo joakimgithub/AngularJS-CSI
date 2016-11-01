@@ -13,7 +13,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         userName: "",
         useRefreshTokens: false,
         isAdmin:  false,
-        customerId: null
+        customerId: null,
+        role:   ""
     };
 
 /*    var _externalAuthData = {
@@ -44,19 +45,15 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         $http.post(serviceBase + 'Token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            if (loginData.useRefreshTokens) {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true, isAdmin: response.isAdmin, customerId: response.customerId});
-            }
-            else {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: response.isAdmin, customerId: response.customerId});
-            }
+            localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: response.isAdmin, customerId: response.customerId});
 
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.useRefreshTokens = loginData.useRefreshTokens;
             _authentication.isAdmin = response.isAdmin;
             _authentication.customerId = response.customerId;
-
+            _authentication.role = "";
+            if(response.isAdmin) _authentication.role = "(Admin)";
             deferred.resolve(response);
 
         }).error(function (err, status) {
@@ -77,6 +74,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         _authentication.useRefreshTokens = false;
         _authentication.isAdmin = false;
         _authentication.customerId = null;
+        _authentication.role = "";
     };
 
     var _fillAuthData = function () {
@@ -88,6 +86,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.useRefreshTokens = authData.useRefreshTokens;
             _authentication.isAdmin = authData.isAdmin;
             _authentication.customerId = authData.customerId;
+            _authentication.role = "";
+            if(authData.isAdmin) _authentication.role = "(Admin)";
         }
 
     };
