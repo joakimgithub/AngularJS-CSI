@@ -71,6 +71,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/extCSIListForCustomer.html"
     });
 
+    $routeProvider.when("/users", {
+        controller: "usersController",
+        templateUrl: "/app/views/usersCustomer.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 
 });
