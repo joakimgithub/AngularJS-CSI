@@ -50,10 +50,13 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.useRefreshTokens = loginData.useRefreshTokens;
-            _authentication.isAdmin = response.isAdmin; //response.isAdmin;
             _authentication.customerId = response.customerId;
             _authentication.role = "";
-            if(response.isAdmin) _authentication.role = "(Admin)";
+            if(response.isAdmin === "True")
+            {
+                _authentication.isAdmin = true;
+                _authentication.role = "(Admin)";
+            }
             deferred.resolve(response);
 
         }).error(function (err, status) {

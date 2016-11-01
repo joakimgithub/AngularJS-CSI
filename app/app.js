@@ -76,7 +76,7 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/users.html"
     });
 
-    $routeProvider.otherwise({ redirectTo: "/home" });
+    $routeProvider.otherwise({ redirectTo: "/login" });
 
 });
 
