@@ -15,7 +15,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
         $scope.login = function() {
             authService.login($scope.loginData)
                 .then(function(response) {
-                        if (authService.authentication.isAdmin === "True")
+                        if (authService.authentication.isAdmin === true)
                             $location.path('/intCustomer');
                         else
                             $location.path('/extCSIListForCustomer');
