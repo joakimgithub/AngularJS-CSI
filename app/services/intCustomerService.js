@@ -38,8 +38,8 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 customer: newCustomer
             };
 
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.post(serviceBase + 'api/AddCustomer', customer).then(function (results) {
+        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.post(serviceBase + 'api/AddCustomer', newCustomer).then(function (results) {
                 return results;
             });
         });
@@ -48,8 +48,8 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
     // ************************
     // Add Customer
     // ************************
-    var _addCustomer = function (customer) {
-        var customer = $scope.newEmptyCustomer(),
+    var _addCustomer = function () {
+        var newCustomer = newEmptyCustomer(),
         // ************************
         // Modal for Add Customer
         // ************************
@@ -64,14 +64,14 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 actionButtonText: 'Insert Customer',
                 headerText: 'Insert',
                 bodyText: 'Are you sure you want to insert this Customer?',
-                customer: customer
+                customer: newCustomer
             };
 
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.post(serviceBase + 'api/AddCustomer', customer).then(function (results) {
+        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.post(serviceBase + 'api/AddCustomer', newCustomer).then(function (results) {
                 return results;
             });
-        });;
+        });
     };
 
     // ************************
@@ -98,8 +98,8 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 customer: updateCustomer
             };
 
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.put(serviceBase + 'api/ModifyCustomer/' + customer.Id, customer).then(function (results) {
+        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.put(serviceBase + 'api/ModifyCustomer/' + updateCustomer.Id, updateCustomer).then(function (results) {
                 return results;
             });
         });
@@ -128,7 +128,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 customer: customer
             };
 
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
             return $http.delete(serviceBase + 'api/DeleteCustomer/' + customer.Id).then(function (results) {
                 return results;
             });
@@ -138,7 +138,6 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
 
     var newEmptyCustomer = function () {
         var customer = {
-            Id: null,
             CustomerCode: null,
             CustomerName: null,
             CustomerEmail: null,

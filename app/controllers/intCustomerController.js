@@ -9,7 +9,7 @@ app.controller('intCustomerController', ['$scope',  'intCustomerService', 'modal
     intCustomerService.getCustomerList().then(function (results) {
         $scope.customers = results.data;
     }, function (error) {
-        //alert(error.data.message);
+        alert(error.data.message);
     });
 
     // ************************
@@ -17,20 +17,24 @@ app.controller('intCustomerController', ['$scope',  'intCustomerService', 'modal
     // ************************
     $scope.copyCustomer = function (customer) {
         intCustomerService.copyCustomer(customer).then(function (results) {
-            //$scope.customers = results.data;
+            $scope.customer = results.data;
+            $scope.refresh();
         }, function (error) {
-            //alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
     // ************************
     // Add customers
     // ************************
-    $scope.addCustomer = function (customer) {
-        intCustomerService.addCustomer(customer).then(function (results) {
-            //$scope.customers = results.data;
+    $scope.addCustomer = function () {
+        intCustomerService.addCustomer().then(function (results) {
+            $scope.customer = results.data;
+            $scope.refresh();
         }, function (error) {
-            //alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
@@ -39,9 +43,11 @@ app.controller('intCustomerController', ['$scope',  'intCustomerService', 'modal
     // ************************
     $scope.updateCustomer = function (customer) {
         intCustomerService.updateCustomer(customer).then(function (results) {
-            //$scope.customers = results.data;
+            $scope.customer = results.data;
+            $scope.refresh();
         }, function (error) {
-            //alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
@@ -50,11 +56,20 @@ app.controller('intCustomerController', ['$scope',  'intCustomerService', 'modal
     // ************************
     $scope.deleteCustomer = function (customer) {
         intCustomerService.deleteCustomer(customer).then(function (results) {
-            //$scope.customers = results.data;
+            $scope.customer = results.data;
+            $scope.refresh();
         }, function (error) {
-            //alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
+    $scope.refresh = function(){
+        intCustomerService.getCustomerList().then(function (results) {
+            $scope.customers = results.data;
+        }, function (error) {
+            alert(error.data.message);
+        });
+    }
 
 }]);
