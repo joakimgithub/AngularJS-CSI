@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="page-header text-left">
-            <h1>Users</h1>
+            <h1>{{pageTitle}}</h1>
         </div>
     </div>
     <div class="input-group">
@@ -43,6 +43,11 @@
                 <span ng-show="sortBy == 'IsAdmin' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'IsAdmin' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
+            <th>
+                <a ng-click="sortBy = 'CustomerId'; sortDescending = !sortDescending">Customer</a>
+                <span ng-show="sortBy == 'CustomerId' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'CustomerId' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
             <th></th>
         </tr>
         <tr data-ng-repeat="user in users | filter: searchText | orderBy:sortBy:sortDescending" >
@@ -52,6 +57,7 @@
             <td ng-bind="user.LastName"></td>
             <td ng-bind="user.Email"></td>
             <td ng-bind="user.IsAdmin"></td>
+            <td ng-bind="user.CustomerId"></td>
         </tr>
     </table>
 </div>
