@@ -1,10 +1,13 @@
-<div ng-app="App.users" ng-controller="usersController">
+<div ng-controller="usersController">
 
     <div class="container">
         <div class="page-header text-left">
             <h1>{{pageTitle}}</h1>
         </div>
     </div>
+
+    <div><button type="button" class="btn-info pull-right btn-m" ng-click="newUser()">Sign Up</button></div>
+    <br><br>
     <div class="input-group">
         <input type="text" ng-model="searchText" class="form-control" placeholder="Search user" >
         <span class="input-group-addon" id="basic-addon1">
@@ -52,6 +55,10 @@
             <td ng-bind="user.Email"></td>
             <td ng-bind="user.IsAdmin"></td>
             <td ng-bind="user.CustomerName"></td>
+            <td>
+                <button type="button" class="btn-info btn-m" ng-click="updateUser(user)">Edit</button>
+                <button type="button" class="btn-info btn-m" ng-click="deleteUser(user)">Del</button>
+            </td>
         </tr>
     </table>
 </div>

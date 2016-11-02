@@ -10,14 +10,46 @@ app.controller("usersController", ['$scope', 'usersService', 'intCustomerService
         //alert(error.data.message);
     });
 
-    // *******************************************
-    // Get all customers for a list of value
-    // *******************************************
-    intCustomerService.getCustomerList().then(function (results) {
-        $scope.lovCustomers = results.data;
-    }, function (error) {
-        //alert(error.data.message);
-    });
+
+    // ************************
+    // Add user
+    // ************************
+    $scope.addUser = function () {
+        usersService.addUser().then(function (results) {
+            $scope.user = results.data;
+            $scope.refresh();
+        }, function (error) {
+            if (error != "Cancel")
+              alert(error.data.message);
+        });
+    };
+
+    // ************************
+    // Update user
+    // ************************
+    $scope.updateUser = function (user) {
+        usersService.updateUser(user).then(function (results) {
+            $scope.user = results.data;
+            $scope.refresh();
+        }, function (error) {
+            if (error != "Cancel")
+              alert(error.data.message);
+        });
+    };
+
+    // ************************
+    // Delete user
+    // ************************
+    $scope.deleteUser = function (user) {
+        usersService.deleteUser(user).then(function (results) {
+            $scope.user = results.data;
+            $scope.refresh();
+        }, function (error) {
+            if (error != "Cancel")
+              alert(error.data.message);
+        });
+    };
+
 
 }]);
 
