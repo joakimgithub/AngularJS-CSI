@@ -11,11 +11,6 @@ app.constant('ngAuthSettings', {
 
 app.config(function ($routeProvider) {
 
-    $routeProvider.when("/home", {
-        controller: "homeController",
-        templateUrl: "/app/views/home.html"
-    });
-
     $routeProvider.when("/login", {
         controller: "loginController",
         templateUrl: "/app/views/login.html"
@@ -24,21 +19,6 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/signup", {
         controller: "signupController",
         templateUrl: "/app/views/signup.html"
-    });
-
-    $routeProvider.when("/refresh", {
-        controller: "refreshController",
-        templateUrl: "/app/views/refresh.html"
-    });
-
-    $routeProvider.when("/tokens", {
-        controller: "tokensManagerController",
-        templateUrl: "/app/views/tokens.html"
-    });
-
-    $routeProvider.when("/associate", {
-        controller: "associateController",
-        templateUrl: "/app/views/associate.html"
     });
 
     $routeProvider.when("/csis", {
