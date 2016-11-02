@@ -10,7 +10,8 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         ConfirmPassword: "",
         FirstName: "",
         LastName: "",
-        CustomerId: ""
+        CustomerId: "",
+        IsAdmin: false
     };
 
     // *******************************************
