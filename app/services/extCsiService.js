@@ -5,7 +5,7 @@ app.factory('extCsisService', ['$http', 'ngAuthSettings', function ($http, ngAut
 
     var extCsisServiceFactory = {};
 
-    var _getCsis = function () {
+    var _getCsis = function (id) {
 
         return $http.get(serviceBase + 'api/GetCSIList').then(function (results) {
             return results;

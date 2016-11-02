@@ -22,7 +22,7 @@
             <tbody>
                 <tr ng-repeat="x in csis">
                     <td>{{ x.ProjectNumber}}</td>
-                    <td><a href="#!/csiView">{{ x.Engagement }}</a></td>
+                    <td><a ng-href="#/extCsi/?id={{x.Id}}">{{ x.Engagement }}</a></td>
                     <td>{{ x.DeliveryUnit }}</td>
                     <td>{{ x.InitiationDate  | date : "yyyy-MM-dd hh:mm" }}</td>
                     <td>{{ x.Consultans }}</td>

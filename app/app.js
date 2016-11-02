@@ -61,7 +61,7 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/extCustomer.html"
     });
 
-    $routeProvider.when("/extCsi", {
+    $routeProvider.when("/extCsi/:id?", {
         controller: "extCsiController",
         templateUrl: "/app/views/extCsi.html"
     });

@@ -1,7 +1,9 @@
 'use strict';
-app.controller("extCsiController", ['$scope', 'extCsiService', function ($scope, extCsiService) {
+app.controller("extCsiController", ['$scope', 'extCsiService', 'routeParams', function ($scope, $routeParams, extCsiService) {
 
-    csisService.GetCSI().then(function (results) {
+    var id = $routeParams.ID;
+
+    csisService.GetCSI(id).then(function (results) {
         $scope.customers = results.data;
     }, function (error) {
         //alert(error.data.message);
