@@ -14,11 +14,6 @@
     <table class="table table-hover">
         <tr class="bg-success">
             <th>
-                <a ng-click="sortBy = 'Id'; sortDescending = !sortDescending">ID</a>
-                <span ng-show="sortBy == 'Id' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
-                <span ng-show="sortBy == 'Id' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
-            </th>
-            <th>
                 <a ng-click="sortBy = 'UserName'; sortDescending = !sortDescending">User Name</a>
                 <span ng-show="sortBy == 'UserName' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'UserName' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
@@ -51,7 +46,6 @@
             <th></th>
         </tr>
         <tr data-ng-repeat="user in users | filter: searchText | orderBy:sortBy:sortDescending" >
-            <td ng-bind="user.Id"></td>
             <td ng-bind="user.UserName"></td>
             <td ng-bind="user.FirstName"></td>
             <td ng-bind="user.LastName"></td>
