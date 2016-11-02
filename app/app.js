@@ -21,11 +21,6 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/signup.html"
     });
 
-    $routeProvider.when("/csis", {
-        controller: "csisController",
-        templateUrl: "/app/views/csis.html"
-    });
-
     $routeProvider.when("/intCustomer", {
         controller: "intCustomerController",
         templateUrl: "/app/views/intCustomer.html"
