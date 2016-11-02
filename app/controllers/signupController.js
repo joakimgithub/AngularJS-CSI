@@ -1,5 +1,5 @@
 'use strict';
-app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', function ($scope, $location, $timeout, authService) {
+app.controller('signupController', ['$scope', '$location', '$timeout', 'authService', 'intCustomerService', function ($scope, $location, $timeout, authService, intCustomerService) {
 
     $scope.savedSuccessfully = false;
     $scope.message = "";
@@ -13,8 +13,18 @@ app.controller('signupController', ['$scope', '$location', '$timeout', 'authServ
         CustomerId: ""
     };
 
-    $scope.signUp = function () {
+    // *******************************************
+    // Get all customers for a list of value
+    // *******************************************
+    intCustomerService.getCustomerList().then(function (results) {
+                                    debugger
+        $scope.lovCustomers = results.data;
+    }, function (error) {
+        //alert(error.data.message);
+    });
 
+    $scope.signUp = function () {
+debugger
         authService.saveRegistration($scope.registration).then(function (response) {
 
             $scope.savedSuccessfully = true;
