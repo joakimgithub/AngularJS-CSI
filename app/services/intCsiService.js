@@ -66,7 +66,7 @@ app.factory('intCsiService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopU
     // Add CSI
     // ************************
     var _addCsi = function (csi) {
-        var csi = $scope.newEmptyCsi(),
+        var csi = newEmptyCsi(),
         // ************************
         // Modal for Add CSI
         // ************************

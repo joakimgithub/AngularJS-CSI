@@ -10,16 +10,17 @@
                 <div>Search Text: {{searchText}}</div>
             </div>
 -->
-            <div><button type="button" class="btn-info btn-m" ng-click="addCsi()">New</button></div>
+            <div>{{error}}</div><div>{{information}}</div>
+            <div><button type="button" class="btn-info btn-m pull-right" ng-click="addCsi()">New</button></div>
             <br>
             <br>
-            <div>{{error}}</div>
             <div class="input-group">
                 <input type="text" ng-model="searchText" class="form-control" placeholder="Search csi" >
                 <span class="input-group-addon" id="basic-addon1">
                     <i class="glyphicon glyphicon-search"></i>
                 </span>
             </div>
+
             <table class="table table-hover">
                 <tr class="bg-success">
                     <th>
