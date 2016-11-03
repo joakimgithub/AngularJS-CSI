@@ -13,42 +13,42 @@ app.config(function ($routeProvider) {
 
     $routeProvider.when("/login", {
         controller: "loginController",
-        templateUrl: "/app/views/login.html"
+        templateUrl: "app/views/login.html"
     });
 
     $routeProvider.when("/signup", {
         controller: "signupController",
-        templateUrl: "/app/views/signup.html"
+        templateUrl: "app/views/signup.html"
     });
 
     $routeProvider.when("/intCustomer", {
         controller: "intCustomerController",
-        templateUrl: "/app/views/intCustomer.html"
+        templateUrl: "app/views/intCustomer.html"
     });
 
     $routeProvider.when("/intCsi", {
         controller: "intCsiController",
-        templateUrl: "/app/views/intCsi.html"
+        templateUrl: "app/views/intCsi.html"
     });
 
     $routeProvider.when("/extCustomer", {
         controller: "extCustomerController",
-        templateUrl: "/app/views/extCustomer.html"
+        templateUrl: "app/views/extCustomer.html"
     });
 
     $routeProvider.when("/extCsi/:id?", {
         controller: "extCsiController",
-        templateUrl: "/app/views/extCsi.html"
+        templateUrl: "app/views/extCsi.html"
     });
 
     $routeProvider.when("/extCSIListForCustomer", {
         controller: "extCSIListForCustomerController",
-        templateUrl: "/app/views/extCSIListForCustomer.html"
+        templateUrl: "app/views/extCSIListForCustomer.html"
     });
 
     $routeProvider.when("/users", {
         controller: "usersController",
-        templateUrl: "/app/views/users.html"
+        templateUrl: "app/views/users.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/login" });
