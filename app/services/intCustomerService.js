@@ -28,7 +28,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: 'app/views/ModalViews/intCustomerCopyModal.html'
+                templateUrl: 'app/views/modalViews/intCustomerCopyModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -57,7 +57,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: 'app/views/ModalViews/intCustomerInsertModal.html'
+                templateUrl: 'app/views/modalViews/intCustomerInsertModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -88,7 +88,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: 'app/views/ModalViews/intCustomerUpdateModal.html'
+                templateUrl: 'app/views/modalViews/intCustomerUpdateModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -118,7 +118,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: 'app/views/ModalViews/intCustomerDeleteModal.html'
+                templateUrl: 'app/views/modalViews/intCustomerDeleteModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
