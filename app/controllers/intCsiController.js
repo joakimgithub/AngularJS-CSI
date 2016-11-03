@@ -17,9 +17,11 @@ app.controller('intCsiController', ['$scope',  'intCsiService', 'modalPopUpServi
     // ************************
     $scope.copyCsi = function (csi) {
         intCsiService.copyCsi(csi).then(function (results) {
-            // $scope.csis = results.data;
+            $scope.csi = results.data;
+            $scope.refresh();
         }, function (error) {
-            // alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
@@ -28,9 +30,11 @@ app.controller('intCsiController', ['$scope',  'intCsiService', 'modalPopUpServi
     // ************************
     $scope.addCsi = function (csi) {
         intCsiService.addCsi(csi).then(function (results) {
-            // $scope.csis = results.data;
+            $scope.csi = results.data;
+            $scope.refresh();
         }, function (error) {
-            // alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
@@ -39,9 +43,11 @@ app.controller('intCsiController', ['$scope',  'intCsiService', 'modalPopUpServi
     // ************************
     $scope.updateCsi = function (csi) {
         intCsiService.updateCsi(csi).then(function (results) {
-            // $scope.csis = results.data;
+            $scope.csi = results.data;
+            $scope.refresh();
         }, function (error) {
-            // alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
@@ -50,11 +56,20 @@ app.controller('intCsiController', ['$scope',  'intCsiService', 'modalPopUpServi
     // ************************
     $scope.deleteCsi = function (csi) {
         intCsiService.deleteCsi(csi).then(function (results) {
-             $scope.csis = results.data;
+            $scope.csi = results.data;
+            $scope.refresh();
         }, function (error) {
-            // alert(error.data.message);
+            if (error != "Cancel")
+              alert(error.data.message);
         });
     };
 
+    $scope.refresh = function(){
+        intCustomerService.getCsiList().then(function (results) {
+            $scope.csis = results.data;
+        }, function (error) {
+            alert(error.data.message);
+        });
+    }
 
 }]);

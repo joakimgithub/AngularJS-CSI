@@ -45,7 +45,7 @@ app.factory('intCsiService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopU
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/intCsiCopyModal.html'
+                templateUrl: '/app/views/modalViews/intCsiCopyModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -74,7 +74,7 @@ app.factory('intCsiService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopU
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/intCsiInsertModal.html'
+                templateUrl: '/app/views/modalViews/intCsiInsertModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -123,7 +123,7 @@ app.factory('intCsiService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopU
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/intCsiUpdateModal.html'
+                templateUrl: '/app/views/modalViews/intCsiUpdateModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -153,7 +153,7 @@ app.factory('intCsiService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopU
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/intCsiDeleteModal.html'
+                templateUrl: '/app/views/modalViews/intCsiDeleteModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
