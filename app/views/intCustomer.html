@@ -7,7 +7,7 @@
     </div>
 
     <div>{{error}}</div><div>{{information}}</div>
-    <div><button type="button" class="btn pull-right btn-xs" ng-click="addCustomer()">New</button></div>
+    <div><button type="button" class="btn-info btn-m pull-right" ng-click="addCustomer()">New</button></div>
     <br>
     <br>
     <div class="input-group">
@@ -47,9 +47,9 @@
             <td><a ng-href="#/intCsiView/?id={{customer.Id}}" ng-bind="customer.CustomerName"></a></td>
             <td ng-bind="customer.CustomerEmail"></td>
             <td>
-                <button type="button" class="btn btn-default btn-xs" ng-click="copyCustomer(customer)">Copy</button>
-                <button type="button" class="btn btn-default btn-xs" ng-click="updateCustomer(customer)">Edit</button>
-                <button type="button" class="btn btn-default btn-xs" ng-click="deleteCustomer(customer)">Del.</button>
+                <button type="button" class="btn-info btn-m" ng-click="copyCustomer(customer)">Copy</button>
+                <button type="button" class="btn-info btn-m" ng-click="updateCustomer(customer)">Edit</button>
+                <button type="button" class="btn-info btn-m" ng-click="deleteCustomer(customer)">Del.</button>
             </td>
         </tr>
     </table>
