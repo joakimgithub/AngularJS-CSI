@@ -28,7 +28,7 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/ModalViews/intUserInsertModal.html'
+                templateUrl: 'app/views/ModalViews/intUserInsertModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -59,7 +59,7 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/ModalViews/intUserUpdateModal.html'
+                templateUrl: 'app/views/ModalViews/intUserUpdateModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
@@ -89,7 +89,7 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
                 backdrop: true,
                 keyboard: true,
                 modalFade: true,
-                templateUrl: '/app/views/ModalViews/intUserDeleteModal.html'
+                templateUrl: 'app/views/ModalViews/intUserDeleteModal.html'
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
