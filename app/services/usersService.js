@@ -20,29 +20,29 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
     // Add User
     // ************************
     var _addUser = function () {
-        var newUser = newEmptyUser(),
-        // ************************
-        // Modal for Add User
-        // ************************
-            modalDefaults = {
-                backdrop: true,
-                keyboard: true,
-                modalFade: true,
-                templateUrl: '/app/views/intCustomerInsertModal.html'
-            },
-            modalOptions = {
-                closeButtonText: 'Cancel',
-                actionButtonText: 'Insert User',
-                headerText: 'Insert',
-                bodyText: 'Are you sure you want to insert this User?',
-                User: newUser
-            };
-
-        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.post(serviceBase + '/api/Account/DeleteUser', newUser).then(function (results) {
-                return results;
-            });
-        });
+//        var newUser = newEmptyUser(),
+//        // ************************
+//        // Modal for Add User
+//        // ************************
+//            modalDefaults = {
+//                backdrop: true,
+//                keyboard: true,
+//                modalFade: true,
+//                templateUrl: '/app/views/intCustomerInsertModal.html'
+//            },
+//            modalOptions = {
+//                closeButtonText: 'Cancel',
+//                actionButtonText: 'Insert User',
+//                headerText: 'Insert',
+//                bodyText: 'Are you sure you want to insert this User?',
+//                User: newUser
+//            };
+//
+//        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+//            return $http.post(serviceBase + '/api/Account/DeleteUser', newUser).then(function (results) {
+//                return results;
+//            });
+//        });
     };
 
     // ************************
@@ -79,7 +79,7 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
     // ************************
     // delete User
     // ************************
-    var _deleteUser = function (User) {
+    var _deleteUser = function (user) {
         var
 
         // ************************
@@ -94,13 +94,14 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
             modalOptions = {
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Delete User',
-                headerText: 'Delete ' + User.name + '?',
+                headerText: 'Delete ' + user.UserName + '?',
                 bodyText: 'Are you sure you want to delete this User?',
-                User: User
+                User: user
             };
 
+
         return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.delete(serviceBase + 'api/Account/DeleteUser',User).then(function (results) {
+            return $http.post(serviceBase + 'api/Account/DeleteUser', user).then(function (results) {
                 return results;
             });
         });

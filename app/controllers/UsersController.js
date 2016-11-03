@@ -50,6 +50,13 @@ app.controller("usersController", ['$scope', 'usersService', 'intCustomerService
         });
     };
 
+    $scope.refresh = function(){
+        intCustomerService.getCustomerList().then(function (results) {
+            $scope.users = results.data;
+        }, function (error) {
+            alert(error.data.message);
+        });
+    }
 
 }]);
 
