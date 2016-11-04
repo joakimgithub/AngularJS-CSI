@@ -109,11 +109,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-3"><label>InitiationDate:</label></td>
-                        <td style="border-bottom: 1px solid #000;" class="col-md-3">{{csi.InitiationDate}}</td>
+                        <td style="border-bottom: 1px solid #000;" class="col-md-3">{{csi.InitiationDate | date:'yyyy-MM-dd'}}</td>
                     </tr>
                     <tr>
                         <td class="col-md-3"><label>Planned date for follow-up:</label></td>
-                        <td style="border-bottom: 1px solid #000;" class="col-md-3">{{csi.PlannedDateForFollowUp}}</td>
+                        <td style="border-bottom: 1px solid #000;" class="col-md-3">{{csi.PlannedDateForFollowUp | date:'yyyy-MM-dd'}}</td>
                     </tr>
                     <tr>
                         <td class="col-md-3"><label>Consultan(s):</label></td>
@@ -132,7 +132,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-3"><label>Date for follow-up:</label></td>
-                        <td style="border-bottom: 1px solid #000;" class="col-md-3">{{csi.FollowedUpDate}}</td>
+                        <td style="border-bottom: 1px solid #000;" class="col-md-3">{{csi.FollowedUpDate | date:'yyyy-MM-dd'}}</td>
                     </tr>
                 </table>
                 <p></p>
