@@ -1,5 +1,5 @@
 'use strict';
-app.controller("extCSIListForCustomerController", ['$scope', '$routeParams', 'extCSIListForCustomerService', function ($scope, extCSIListForCustomerService) {
+app.controller("extCSIListForCustomerController", ['$scope', '$routeParams', 'extCSIListForCustomerService', function ($scope, $routeParams, extCSIListForCustomerService) {
 
     $scope.pageTitle = 'Your Csis';
     var id = $routeParams.id;
