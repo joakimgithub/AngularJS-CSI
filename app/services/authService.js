@@ -96,6 +96,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
 
     authServiceFactory.saveRegistration = _saveRegistration;
+    authServiceFactory.updateUser = _updateUser
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;

@@ -15,9 +15,11 @@ app.controller('intUpdateUserController', ['$scope', '$routeParams', '$location'
         //IsAdmin: $scope.theUser.IsAdmin
     };
 
+
        $scope.fake = "";
 
-/*  "Id": "string",
+/* POST /api/Account/ModifyUser {
+  "Id": "string",
   "UserName": "string",
   "FirstName": "string",
   "LastName": "string",
@@ -25,6 +27,7 @@ app.controller('intUpdateUserController', ['$scope', '$routeParams', '$location'
   "CustomerId": 0,
   "CustomerName": "string",
   "IsAdmin": true
+}
   */
     // *******************************************
     // Get all customers for a list of value
