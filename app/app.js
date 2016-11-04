@@ -26,21 +26,6 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/intCsi.html"
     });
 
-    $routeProvider.when("/extCustomer", {
-        controller: "extCustomerController",
-        templateUrl: "app/views/extCustomer.html"
-    });
-
-    $routeProvider.when("/extCsi/:id?", {
-        controller: "extCsiController",
-        templateUrl: "app/views/extCsi.html"
-    });
-
-    $routeProvider.when("/extCSIListForCustomer", {
-        controller: "extCSIListForCustomerController",
-        templateUrl: "app/views/extCSIListForCustomer.html"
-    });
-
     $routeProvider.when("/intUser", {
         controller: "intUserController",
         templateUrl: "app/views/intUser.html"
@@ -54,6 +39,16 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/intUpdateUser", {
         controller: "intUpdateUserController",
         templateUrl: "app/views/intUpdateUser.html"
+    });
+
+        $routeProvider.when("/extCsi/:id?", {
+        controller: "extCsiController",
+        templateUrl: "app/views/extCsi.html"
+    });
+
+    $routeProvider.when("/extCSIListForCustomer/:id?", {
+        controller: "extCSIListForCustomerController",
+        templateUrl: "app/views/extCSIListForCustomer.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/login" });
