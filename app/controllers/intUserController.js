@@ -1,6 +1,6 @@
 'use strict';
-app.controller("intUserController", ['$scope', 'intUserService', 'intCustomerService',
-                                   function ($scope, intUserService, intCustomerService) {
+app.controller("intUserController", ['$scope', '$location', 'intUserService', 'intCustomerService',
+                                   function ($scope, $location, intUserService, intCustomerService) {
 
     $scope.pageTitle = 'Users';
 
@@ -28,13 +28,7 @@ app.controller("intUserController", ['$scope', 'intUserService', 'intCustomerSer
     // Update user
     // ************************
     $scope.updateUser = function (user) {
-        intUserService.updateUser(user).then(function (results) {
-            $scope.user = results.data;
-            $scope.refresh();
-        }, function (error) {
-            if (error != "Cancel")
-              alert(error.data.message);
-        });
+        $location.path('/intUpdateUser');
     };
 
     // ************************

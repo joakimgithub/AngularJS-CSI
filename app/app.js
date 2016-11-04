@@ -16,11 +16,6 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/login.html"
     });
 
-    $routeProvider.when("/signup", {
-        controller: "signupController",
-        templateUrl: "app/views/signup.html"
-    });
-
     $routeProvider.when("/intCustomer", {
         controller: "intCustomerController",
         templateUrl: "app/views/intCustomer.html"
@@ -49,6 +44,16 @@ app.config(function ($routeProvider) {
     $routeProvider.when("/intUser", {
         controller: "intUserController",
         templateUrl: "app/views/intUser.html"
+    });
+
+    $routeProvider.when("/intSignup", {
+        controller: "intSignupController",
+        templateUrl: "app/views/intSignup.html"
+    });
+
+    $routeProvider.when("/intUpdateUser", {
+        controller: "intUpdateUserController",
+        templateUrl: "app/views/intUpdateUser.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/login" });

@@ -17,21 +17,20 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         role:   ""
     };
 
-/*    var _externalAuthData = {
-        provider: "",
-        userName: "",
-        externalAccessToken: ""
-    };*/
 
     var _saveRegistration = function (registration) {
-
-//        _logOut();
-
         return $http.post(serviceBase + 'api/Account/AddUser', registration).then(function (response) {
             return response;
         });
-
     };
+
+
+    var _updateUser = function (user) {
+        return $http.post(serviceBase + 'api/Account/ModifyUser', user).then(function (response) {
+            return response;
+        });
+    };
+
 
     var _login = function (loginData) {
 
@@ -101,11 +100,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
     authServiceFactory.authentication = _authentication;
-    //authServiceFactory.refreshToken = _refreshToken;
 
-    //authServiceFactory.obtainAccessToken = _obtainAccessToken;
-    //authServiceFactory.externalAuthData = _externalAuthData;
-    //authServiceFactory.registerExternal = _registerExternal;
 
     return authServiceFactory;
 }]);
