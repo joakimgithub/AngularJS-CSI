@@ -1,19 +1,31 @@
 'use strict';
-app.controller('intUpdateUserController', ['$scope', '$location', '$timeout', 'authService', 'intCustomerService', function ($scope, $location, $timeout, authService, intCustomerService) {
+app.controller('intUpdateUserController', ['$scope', '$routeParams', '$location', '$timeout', 'authService', 'intCustomerService', function ($scope, $routeParams, $location, $timeout, authService, intCustomerService) {
 
+    $scope.theUserInt = $routeParams.theUser;
     $scope.savedSuccessfully = false;
     $scope.message = "";
 
-    $scope.registration = {
-        Email: "",
-        Password: "",
-        ConfirmPassword: "",
-        FirstName: "",
-        LastName: "",
-        CustomerId: "",
-        IsAdmin: false
+    $scope.user = {
+        Id: $scope.theUserInt.Id,
+        FirstName: [$scope.theUserInt].FirstName,
+        //LastName: $scope.theUser.LastName,
+        //Email: $scope.theUser.Email,
+        //CustomerId: $scope.theUser.CustomerId,
+        //CustomerName: $scope.theUser.CustomerName,
+        //IsAdmin: $scope.theUser.IsAdmin
     };
 
+       $scope.fake = "";
+
+/*  "Id": "string",
+  "UserName": "string",
+  "FirstName": "string",
+  "LastName": "string",
+  "Email": "string",
+  "CustomerId": 0,
+  "CustomerName": "string",
+  "IsAdmin": true
+  */
     // *******************************************
     // Get all customers for a list of value
     // *******************************************
@@ -23,11 +35,11 @@ app.controller('intUpdateUserController', ['$scope', '$location', '$timeout', 'a
         //alert(error.data.message);
     });
 
-    $scope.signUp = function () {
-        authService.saveRegistration($scope.registration).then(function (response) {
+    $scope.addUser = function (user) {
+        authService.updateUser($scope.user).then(function (response) {
 
             $scope.savedSuccessfully = true;
-            $scope.message = "User has been registered successfully, you will be redirected to login page in 2 seconds.";
+            $scope.message = "User has been updated successfully";
             startTimer();
 
         },function (response) {
@@ -37,7 +49,7 @@ app.controller('intUpdateUserController', ['$scope', '$location', '$timeout', 'a
                      errors.push(response.data.ModelState[key][i]);
                  }
              }
-             $scope.message = "Failed to register user due to:" + errors.join(' ');
+             $scope.message = "Failed to update user due to:" + errors.join(' ');
          });
     };
 

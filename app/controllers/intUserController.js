@@ -14,7 +14,7 @@ app.controller("intUserController", ['$scope', '$location', 'intUserService', 'i
     // ************************
     // Add user
     // ************************
-    $scope.addUser = function () {
+/*    $scope.addUser = function () {
         intUserService.addUser().then(function (results) {
             $scope.user = results.data;
             $scope.refresh();
@@ -22,14 +22,14 @@ app.controller("intUserController", ['$scope', '$location', 'intUserService', 'i
             if (error != "Cancel")
               alert(error.data.message);
         });
-    };
+    };*/
 
     // ************************
     // Update user
     // ************************
-    $scope.updateUser = function (user) {
-        $location.path('/intUpdateUser');
-    };
+//    $scope.updateUser = function (theUser) {
+//        $location.path('/intUpdateUser/?' + theUser);
+//    };
 
     // ************************
     // Delete user

@@ -36,7 +36,7 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/intSignup.html"
     });
 
-    $routeProvider.when("/intUpdateUser", {
+    $routeProvider.when("/intUpdateUser/:theUser?", {
         controller: "intUpdateUserController",
         templateUrl: "app/views/intUpdateUser.html"
     });
