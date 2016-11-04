@@ -7,7 +7,8 @@
     </div>
 
     <div>{{error}}</div><div>{{information}}</div>
-    <div><button type="button" class="btn-info btn-m pull-right" ng-click="addCustomer()">New</button></div>
+    <div><a class="pull-right" ng-click="addCustomer()">New</a></div>
+<!--    <div><button type="button" class="btn-info btn-m pull-right" ng-click="addCustomer()">New</button></div>    -->
     <br>
     <br>
     <div class="input-group">
@@ -46,10 +47,15 @@
             <td ng-bind="customer.CustomerCode"></td>
             <td><a ng-href="#/intCsiView/?id={{customer.Id}}" ng-bind="customer.CustomerName"></a></td>
             <td ng-bind="customer.CustomerEmail"></td>
-            <td>
+            <td align="right">
+                <a ng-click="copyCustomer(customer)">Copy</a>&nbsp;&nbsp;
+                <a ng-click="updateCustomer(customer)">Edit</a>&nbsp;&nbsp;
+                <a ng-click="deleteCustomer(customer)">Del</a>&nbsp;&nbsp;
+<!--
                 <button type="button" class="btn-info btn-m" ng-click="copyCustomer(customer)">Copy</button>
                 <button type="button" class="btn-info btn-m" ng-click="updateCustomer(customer)">Edit</button>
-                <button type="button" class="btn-info btn-m" ng-click="deleteCustomer(customer)">Del.</button>
+                <button type="button" class="btn-info btn-m" ng-click="deleteCustomer(customer)">Del</button>
+-->
             </td>
         </tr>
     </table>
