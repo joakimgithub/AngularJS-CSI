@@ -9,7 +9,7 @@
         <option ng-repeat="x in lovCustomers" value="{{x.Id}}">{{x.CustomerName}}</option>
     </select>
     <div class="checkbox checkbox-info">
-        <input id="checkboxAdmin" type="checkbox" ng-model="registration.IsAdmin">
+        <input id="checkboxAdmin" type="checkbox" ng-model="registration.IsAdmin" required>
         <label for="checkboxAdmin">
             Admin
         </label>
