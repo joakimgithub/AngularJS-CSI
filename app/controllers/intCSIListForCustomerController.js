@@ -1,7 +1,7 @@
 'use strict';
 app.controller("intCSIListForCustomerController", ['$scope', '$routeParams', 'intCSIListForCustomerService', function ($scope, $routeParams, intCSIListForCustomerService) {
 
-    $scope.pageTitle = 'Csis';
+    $scope.pageTitle = 'CSI List';
     var id = $routeParams.id;
     $scope.csis = [];
 
