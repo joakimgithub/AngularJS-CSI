@@ -33,6 +33,10 @@ body {
     margin: 0 auto;
 }
 
+[ng-click] {
+    cursor: pointer;
+}
+
     .form-login .form-login-heading {
         margin-bottom: 10px;
     }
