@@ -46,6 +46,11 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/intCSIListForCustomer.html"
     });
 
+    $routeProvider.when("/intUserChangePassword/:id?", {
+        controller: "intUserChangePasswordController",
+        templateUrl: "app/views/intUserChangePassword.html"
+    });
+
     $routeProvider.when("/extCsi/:id?", {
         controller: "extCsiController",
         templateUrl: "app/views/extCsi.html"

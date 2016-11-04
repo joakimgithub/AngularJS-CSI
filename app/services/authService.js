@@ -31,6 +31,11 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         });
     };
 
+    var _changeUserPassword = function (user) {
+        return $http.post(serviceBase + 'api/Account/ModifyUser', user).then(function (response) {
+            return response;
+        });
+    };
 
     var _login = function (loginData) {
 
@@ -96,7 +101,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
 
     authServiceFactory.saveRegistration = _saveRegistration;
-    authServiceFactory.updateUser = _updateUser
+    authServiceFactory.updateUser = _updateUser;
+    authServiceFactory.changeUserPassword = _changeUserPassword;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
