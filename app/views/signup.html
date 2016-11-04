@@ -5,10 +5,15 @@
     <input type="password" class="form-control" placeholder="Confirm Password" data-ng-model="registration.ConfirmPassword" required>
     <input type="text" class="form-control" placeholder="First Name" data-ng-model="registration.FirstName" required>
     <input type="text" class="form-control" placeholder="Last Name" data-ng-model="registration.LastName" required>
-    <select  ng-model="registration.CustomerId" class="form-control" required>
+    <select ng-model="registration.CustomerId" class="form-control" required>
         <option ng-repeat="x in lovCustomers" value="{{x.Id}}">{{x.CustomerName}}</option>
     </select>
-    <input type="checkbox" class="form-control" data-ng-model="registration.IsAdmin">
+    <div class="checkbox checkbox-info">
+        <input id="checkboxAdmin" type="checkbox" ng-model="registration.IsAdmin">
+        <label for="checkboxAdmin">
+            Admin
+        </label>
+    </div>
     <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="signUp()">Submit</button>
     <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
         {{message}}

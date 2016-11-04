@@ -20,7 +20,7 @@
                 <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </button>
-                <a class="navbar-brand" href="#/"><img src="content/images/Sogeti-liten.png"></a>
+                <a class="navbar-brand"><img src="content/images/Sogeti-liten.png"></a>
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
@@ -29,7 +29,7 @@
                     <li data-ng-show="authentication.isAuth && authentication.isAdmin"><a href="#/users">Users</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
-                    <li data-ng-hide="!authentication.isAdmin"> <a href="#/signup">Sign Up</a></li>
+<!--                    <li data-ng-hide="!authentication.isAdmin"> <a href="#/signup">Sign Up</a></li>-->
                 </ul>
             </div>
         </div>
