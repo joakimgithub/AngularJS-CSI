@@ -5,10 +5,10 @@ app.controller('intUserChangePasswordController', ['$scope', '$routeParams', '$l
     $scope.savedSuccessfully = false;
     $scope.message = "";
 
-    $scope.password = {
-        OldPassword: "string",
-        NewPassword: "string",
-        ConfirmPassword: "string"
+    $scope.userPassword = {
+        OldPassword: "",
+        NewPassword: "",
+        ConfirmPassword: ""
     }
 
 /*    POST /api/Account/ChangePassword
@@ -19,8 +19,8 @@ app.controller('intUserChangePasswordController', ['$scope', '$routeParams', '$l
       }
 */
 
-    $scope.ChangePassword = function () {
-        authService.changeUserPassword($scope.password).then(function (response) {
+    $scope.changePassword = function () {
+        authService.changeUserPassword($scope.userPassword).then(function (response) {
 
             $scope.savedSuccessfully = true;
             $scope.message = "Password has been updated successfully";
@@ -41,7 +41,7 @@ app.controller('intUserChangePasswordController', ['$scope', '$routeParams', '$l
         var timer = $timeout(function () {
             $timeout.cancel(timer);
             $location.path('/intUser');
-        }, 2000);
+        }, 4000);
     }
 
 }]);
