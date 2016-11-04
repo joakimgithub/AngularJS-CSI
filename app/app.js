@@ -41,12 +41,17 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/intUpdateUser.html"
     });
 
-        $routeProvider.when("/extCsi/:id?", {
+    $routeProvider.when("/intCSIListForCustomer/:id?", {
+        controller: "intCSIListForCustomerController",
+        templateUrl: "app/views/intCSIListForCustomer.html"
+    });
+
+    $routeProvider.when("/extCsi/:id?", {
         controller: "extCsiController",
         templateUrl: "app/views/extCsi.html"
     });
 
-    $routeProvider.when("/extCSIListForCustomer/:id?", {
+    $routeProvider.when("/extCSIListForCustomer/", {
         controller: "extCSIListForCustomerController",
         templateUrl: "app/views/extCSIListForCustomer.html"
     });
