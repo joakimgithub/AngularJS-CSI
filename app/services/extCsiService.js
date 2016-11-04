@@ -1,19 +1,49 @@
 'use strict';
-app.factory('extCsisService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
+app.factory('extCsiService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
-    var extCsisServiceFactory = {};
+    var extCsiServiceFactory = {};
 
-    var _getCsis = function (id) {
+    var _GetCSI = function (id) {
 
-        return $http.get(serviceBase + 'api/GetCSIList').then(function (results) {
+        return $http.get(serviceBase + 'api/GetCSI/'+id).then(function (results) {
             return results;
         });
     };
 
-    extCsisServiceFactory.getCsis = _getCsis;
+    extCsiServiceFactory.GetCSI = _GetCSI;
 
-    return csisServiceFactory;
+    return extCsiServiceFactory;
 
 }]);
+
+'use strict';
+app.factory('extCsiQCService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
+
+    var serviceBase = ngAuthSettings.apiServiceBaseUri;
+
+    var extCsiQCServiceFactory = {};
+
+    var _GetCSIQC = function (id) {
+        return $http.get(serviceBase + 'api/GetQualityCriteriaListForCSI/'+id).then(function (results) {
+            return results;
+        });
+    };
+
+    extCsiQCServiceFactory.GetCSIQC = _GetCSIQC;
+
+    return extCsiQCServiceFactory;
+
+}]);
+
+// *** Services ***
+// Service SharedDataService
+app.service('SharedDataService', function () {
+        'use strict';
+        var ShareData = {
+                totalIV: 0,
+                totalV5: 0,
+                total: 0};
+        return ShareData;
+    })  // End SharedDataService

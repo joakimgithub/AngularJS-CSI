@@ -6,10 +6,10 @@
 
 <div id="exportthis">
     <div class="container-fluid ">
-        <img class="img-responsive" src="/app/assets/img/QQCSI_top.PNG" alt="Sogeti">
+        <img class="img-responsive" src="content/images/QQCSI_top.PNG" alt="Sogeti">
     </div>
     <p></p>
-    <div id="tblCSIQCs" ng-controller="CsiQualityCriteriaController">
+    <div id="tblCSIQCs" ng-controller="extCsiQCController">
         <div class="row ">
             <div class="col-md-12">
                 <table class="table table-responsive table-hover">
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <div id="CSIMainContext" ng-controller="CsiMainInformationController" class="container-fluid ">
+    <div id="CSIMainContext" ng-controller="extCsiController" class="container-fluid ">
         <div>
             <button ng-click="openPdf()">Open Pdf</button>
             <button ng-click="downloadPdf()">Download Pdf</button>
@@ -154,7 +154,7 @@
             </div>
         </div>
     </div>
-    <div extCsi-text></div>
+    <div csi-Text></div>
 
     </div>
 
