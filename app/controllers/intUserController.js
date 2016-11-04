@@ -1,10 +1,10 @@
 'use strict';
-app.controller("usersController", ['$scope', 'usersService', 'intCustomerService',
-                                   function ($scope, usersService, intCustomerService) {
+app.controller("intUserController", ['$scope', 'intUserService', 'intCustomerService',
+                                   function ($scope, intUserService, intCustomerService) {
 
     $scope.pageTitle = 'Users';
 
-    usersService.getUserList().then(function (results) {
+    intUserService.getUserList().then(function (results) {
         $scope.users = results.data;
     }, function (error) {
         //alert(error.data.message);
@@ -15,7 +15,7 @@ app.controller("usersController", ['$scope', 'usersService', 'intCustomerService
     // Add user
     // ************************
     $scope.addUser = function () {
-        usersService.addUser().then(function (results) {
+        intUserService.addUser().then(function (results) {
             $scope.user = results.data;
             $scope.refresh();
         }, function (error) {
@@ -28,7 +28,7 @@ app.controller("usersController", ['$scope', 'usersService', 'intCustomerService
     // Update user
     // ************************
     $scope.updateUser = function (user) {
-        usersService.updateUser(user).then(function (results) {
+        intUserService.updateUser(user).then(function (results) {
             $scope.user = results.data;
             $scope.refresh();
         }, function (error) {
@@ -41,7 +41,7 @@ app.controller("usersController", ['$scope', 'usersService', 'intCustomerService
     // Delete user
     // ************************
     $scope.deleteUser = function (user) {
-        usersService.deleteUser(user).then(function (results) {
+        intUserService.deleteUser(user).then(function (results) {
             $scope.user = results.data;
             $scope.refresh();
         }, function (error) {
@@ -51,7 +51,7 @@ app.controller("usersController", ['$scope', 'usersService', 'intCustomerService
     };
 
     $scope.refresh = function(){
-        usersService.getUserList().then(function (results) {
+        intUserService.getUserList().then(function (results) {
             $scope.users = results.data;
         }, function (error) {
             alert(error.data.message);

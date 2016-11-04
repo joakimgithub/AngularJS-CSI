@@ -1,10 +1,10 @@
 'use strict';
-app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$uibModal',
+app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$uibModal',
                              function($http, ngAuthSettings, modalPopUpService, $uibModal) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
-    var usersServiceFactory = {};
+    var intUserServiceFactory = {};
 
     // ************************
     // Get Users
@@ -123,11 +123,11 @@ app.factory('usersService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$u
     };
 
 
-    usersServiceFactory.getUserList = _getUserList;
-    usersServiceFactory.addUser = _addUser;
-    usersServiceFactory.updateUser = _updateUser;
-    usersServiceFactory.deleteUser = _deleteUser;
+    intUserServiceFactory.getUserList = _getUserList;
+    intUserServiceFactory.addUser = _addUser;
+    intUserServiceFactory.updateUser = _updateUser;
+    intUserServiceFactory.deleteUser = _deleteUser;
 
-    return usersServiceFactory;
+    return intUserServiceFactory;
 
 }]);

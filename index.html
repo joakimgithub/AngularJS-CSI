@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"> <a>Welcome {{authentication.userName}} {{authentication.role}}</a></li>
                     <li data-ng-show="authentication.isAuth && authentication.isAdmin"><a href="#/intCustomer">Customers</a></li>
-                    <li data-ng-show="authentication.isAuth && authentication.isAdmin"><a href="#/users">Users</a></li>
+                    <li data-ng-show="authentication.isAuth && authentication.isAdmin"><a href="#/intUser">Users</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
 <!--                    <li data-ng-hide="!authentication.isAdmin"> <a href="#/signup">Sign Up</a></li>-->
@@ -80,7 +80,7 @@
     <script src="app/services/intCsiService.js?v=1"></script>
     <script src="app/services/extCsiService.js"></script>
     <script src="app/services/extCSIListForCustomerService.js"></script>
-    <script src="app/services/usersService.js"></script>
+    <script src="app/services/intUserService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/indexController.js?v=2"></script>
     <script src="app/controllers/loginController.js?v=2"></script>
@@ -90,7 +90,7 @@
     <script src="app/controllers/intCsiController.js?v=1"></script>
     <script src="app/controllers/extCsiController.js"></script>
     <script src="app/controllers/extCSIListForCustomerController.js"></script>
-    <script src="app/controllers/usersController.js"></script>
+    <script src="app/controllers/intUserController.js"></script>
     <!-- Load custom filters -->
     <!-- Load custom directives -->
 

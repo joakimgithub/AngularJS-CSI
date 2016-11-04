@@ -46,9 +46,9 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/extCSIListForCustomer.html"
     });
 
-    $routeProvider.when("/users", {
-        controller: "usersController",
-        templateUrl: "app/views/users.html"
+    $routeProvider.when("/intUser", {
+        controller: "intUserController",
+        templateUrl: "app/views/intUser.html"
     });
 
     $routeProvider.otherwise({ redirectTo: "/login" });
