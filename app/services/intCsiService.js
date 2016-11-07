@@ -1,209 +1,75 @@
 'use strict';
-app.factory('intCsiService', ['$http', '$uibModal', 'ngAuthSettings', 'modalPopUpService', function ($http, $uibModal, ngAuthSettings, modalPopUpService) {
+app.factory('intCsiService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
     var intCsiServiceFactory = {};
 
-    // ************************
-    // Get Csis
-    // ************************
-    var _getCsiList = function () {
-        return $http.get(serviceBase + 'api/GetCsiList').then(function (results) {
+    var _GetCSI = function (id) {
+
+        return $http.get(serviceBase + 'api/GetCSI/'+id).then(function (results) {
             return results;
         });
     };
 
-    // ************************
-    // Modal for CSI copy
-    // ************************
-    var _copyCsi = function (csi) {
-        var newCsi = {
-                Id_Customer: csi.Id_Customer,
-                Id_Status: csi.Id_Status,
-                ClientName: csi.ClientName,
-                ClientEmail: csi.ClientEmail,
-                InitiatedByClient: csi.InitiatedByClient,
-                AccountManagerName: csi.AccountManagerName,
-                AccountManagerEmail: csi.AccountManagerEmail,
-                Engagement: csi.Engagement,
-                ProjectNumber: csi.ProjectNumber,
-                DeliveryUnit: csi.DeliveryUnit,
-                InitiationDate: csi.InitiationDate,
-                Consultants: csi.Consultants,
-                PlannedDateForFollowUp: csi.PlannedDateForFollowUp,
-                FollowedUpDate: csi.FollowedUpDate,
-                FollowedUpByClient: csi.FollowedUpByClient,
-                SimpleCSI: csi.SimpleCSI};
-
-        var CsiToIns = csi.Id + ' ' + csi.Engagement,
-
-        // ************************
-        // Modal for CSI copy
-        // ************************
-            modalDefaults = {
-                backdrop: true,
-                keyboard: true,
-                modalFade: true,
-                templateUrl: 'app/views/modalViews/intCsiCopyModal.html'
-            },
-            modalOptions = {
-                closeButtonText: 'Cancel',
-                actionButtonText: 'Copy CSI',
-                headerText: 'Make a copy of CSI: ' + CsiToIns + '?',
-                bodyText: 'Are you sure you want to Copy this CSI?',
-                csi: newCsi
-            };
-
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.post(serviceBase + 'api/AddCSI', csi).then(function (results) {
-                return results;
-            });
-        });
-    };
-
-    // ************************
-    // Add CSI
-    // ************************
-    var _addCsi = function (csi) {
-        var csi = newEmptyCsi(),
-        // ************************
-        // Modal for Add CSI
-        // ************************
-            modalDefaults = {
-                backdrop: true,
-                keyboard: true,
-                modalFade: true,
-                templateUrl: 'app/views/modalViews/intCsiInsertModal.html'
-            },
-            modalOptions = {
-                closeButtonText: 'Cancel',
-                actionButtonText: 'Insert CSI',
-                headerText: 'Insert',
-                bodyText: 'Are you sure you want to insert this CSI?',
-                csi: csi
-            };
-
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.post(serviceBase + 'api/AddCsi', csi).then(function (results) {
-                return results;
-            });
-        });;
-    };
-
-    // ************************
-    // update CSI
-    // ************************
-    var _updateCsi = function (csi) {
-       var updateCsi = {
-                Id: csi.Id,
-                Id_Customer: csi.Id_Customer,
-                Id_Status: csi.Id_Status,
-                ClientName: csi.ClientName,
-                ClientEmail: csi.ClientEmail,
-                InitiatedByClient: csi.InitiatedByClient,
-                AccountManagerName: csi.AccountManagerName,
-                AccountManagerEmail: csi.AccountManagerEmail,
-                Engagement: csi.Engagement,
-                ProjectNumber: csi.ProjectNumber,
-                DeliveryUnit: csi.DeliveryUnit,
-                InitiationDate: csi.InitiationDate,
-                Consultants: csi.Consultants,
-                PlannedDateForFollowUp: csi.PlannedDateForFollowUp,
-                FollowedUpDate: csi.FollowedUpDate,
-                FollowedUpByClient: csi.FollowedUpByClient,
-                SimpleCSI: csi.SimpleCSI};
-
-        var csiToUpd = csi.Id + ' ' + csi.Engagement,
-
-            // ************************
-            // Modal for CSI update
-            // ************************
-            modalDefaults = {
-                backdrop: true,
-                keyboard: true,
-                modalFade: true,
-                templateUrl: 'app/views/modalViews/intCsiUpdateModal.html'
-            },
-            modalOptions = {
-                closeButtonText: 'Cancel',
-                actionButtonText: 'Update CSI',
-                headerText: 'Update ' + csiToUpd + '?',
-                bodyText: 'Are you sure you want to update this CSI?',
-                csi: updateCsi
-            };
-
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.put(serviceBase + 'api/ModifyCSI/' + updateCsi.Id, updateCsi).then(function (results) {
-                return results;
-            });
-        });
-    };
-
-    // ************************
-    // delete CSI
-    // ************************
-    var _deleteCsi = function (csi) {
-        var csiToDel = csi.Id + ' ' + csi.Engagement,
-
-        // ************************
-        // Modal for CSI delete
-        // ************************
-            modalDefaults = {
-                backdrop: true,
-                keyboard: true,
-                modalFade: true,
-                templateUrl: 'app/views/modalViews/intCsiDeleteModal.html'
-            },
-            modalOptions = {
-                closeButtonText: 'Cancel',
-                actionButtonText: 'Delete CSI',
-                headerText: 'Delete ' + csiToDel + '?',
-                bodyText: 'Are you sure you want to delete this CSI?',
-                csi: csi
-            };
-
-        modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.delete(serviceBase + 'api/DeleteCSI/' + csi.Id).then(function (results) {
-                return results;
-            });
-        });
-    };
-
-
-    var newEmptyCsi = function() {
-            var csi = {
-                Id: null,
-                Id_Customer: null,
-                Id_Status: null,
-                ClientName: null,
-                ClientEmail: null,
-                InitiatedByClient: null,
-                AccountManagerName: null,
-                AccountManagerEmail: null,
-                Engagement: null,
-                ProjectNumber: null,
-                DeliveryUnit: null,
-                InitiationDate: null,
-                Consultants: null,
-                PlannedDateForFollowUp: null,
-                FollowedUpDate: null,
-                FollowedUpByClient: null,
-                SimpleCSI: null,
-                Created: null,
-                CreatedBy: null,
-                Updated: null,
-                UpdatedBy: null
-            };
-            return csi;
-        };
-
-    intCsiServiceFactory.getCsiList = _getCsiList;
-    intCsiServiceFactory.copyCsi = _copyCsi;
-    intCsiServiceFactory.addCsi = _addCsi;
-    intCsiServiceFactory.updateCsi = _updateCsi;
-    intCsiServiceFactory.deleteCsi = _deleteCsi;
+    intCsiServiceFactory.GetCSI = _GetCSI;
 
     return intCsiServiceFactory;
+
 }]);
 
+'use strict';
+app.factory('intCsiQCService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
+
+    var serviceBase = ngAuthSettings.apiServiceBaseUri;
+
+    var intCsiQCServiceFactory = {};
+
+    var _GetCSIQC = function (id) {
+        return $http.get(serviceBase + 'api/GetQualityCriteriaListForCSI/'+id).then(function (results) {
+            return results;
+        });
+    };
+
+    var _SaveCsiQC = function (csiQC) {
+        // Tagits bort
+        if (csiQC.isDeleted)
+        {
+            return $http.delete(serviceBase + '/api/DeleteQualityCriteria/'+ csiQC.Id).then(function (results) {
+                return results;
+            });
+        }
+        // Lagts till
+        else if (csiQC.isNew) {
+            // If its new let the db set id
+            return $http.post(serviceBase + 'api/AddQualityCriteria', csiQC).then(function (results) {
+                return results;
+            });
+        }
+        // Uppdaterats
+        else
+        {
+            return $http.put(serviceBase + 'api/ModifyQualityCriteria/' + csiQC.Id, csiQC).then(function (results) {
+                return results;
+            });
+        }
+    };
+
+    intCsiQCServiceFactory.GetCSIQC = _GetCSIQC;
+    intCsiQCServiceFactory.SaveCsiQC = _SaveCsiQC;
+
+    return intCsiQCServiceFactory;
+
+}]);
+
+// *** Services ***
+// Service SharedDataService
+app.service('SharedDataService', function () {
+        'use strict';
+        var ShareData = {
+            Id_Csi: null,
+            totalIV: 0,
+            totalV5: 0,
+            total: 0};
+        return ShareData;
+    })  // End SharedDataService

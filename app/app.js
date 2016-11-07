@@ -21,7 +21,7 @@ app.config(function ($routeProvider) {
         templateUrl: "app/views/intCustomer.html"
     });
 
-    $routeProvider.when("/intCsi", {
+    $routeProvider.when("/intCsi/:id?", {
         controller: "intCsiController",
         templateUrl: "app/views/intCsi.html"
     });

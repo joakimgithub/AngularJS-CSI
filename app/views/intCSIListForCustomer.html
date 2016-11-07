@@ -72,6 +72,7 @@
                 </tr>
 
                 <tr data-ng-repeat="csi in csis | filter: searchText | orderBy:sortBy:sortDescending" >
+                    <td><a ng-href="#/intCsi/?id={{csi.Id}}">{{ csi.Id }}</a></td>
                     <td ng-bind="csi.Id"></td>
                     <td ng-bind="csi.ClientName"></td>
                     <td ng-bind="csi.ClientEmail"></td>
