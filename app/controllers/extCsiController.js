@@ -68,12 +68,20 @@ app.controller("extCsiQCController", ['$scope', '$routeParams', 'extCsiQCService
                 $scope.csiQualityCriterias.splice(i, 1);
             }
             results.push(extCsiQCService.SaveCsiQC(csiQC));
-
-            // After update mark new row as not new
-            if (csiQC.isNew) {
-                csiQC.isNew = false;
-            }
         }
+
+        $scope.ShareData.totalIV = 0;
+        $scope.ShareData.totalV5 = 0;
+        $scope.ShareData.total = 0;
+        angular.forEach($scope.csiQualityCriterias, function(csiQualityCriteria){
+            // Passar på att sätt isNew till false
+            csiQualityCriteria.isNew = false;
+            // Räknar ut Index för bedömningen
+            $scope.ShareData.totalIV = $scope.ShareData.totalIV + (csiQualityCriteria.Importance * csiQualityCriteria.Value);
+            $scope.ShareData.totalV5 = $scope.ShareData.totalV5 + (csiQualityCriteria.Value *5);
+            $scope.ShareData.total =(Math.round((($scope.ShareData.totalIV/$scope.ShareData.totalV5) * 5) * 10) / 10);
+        });
+
         return $q.all(results);
     };
 
