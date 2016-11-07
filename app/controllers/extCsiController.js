@@ -2,13 +2,13 @@
 app.controller("extCsiController", ['$scope', '$routeParams', 'extCsiService','SharedDataService', function ($scope, $routeParams, extCsiService, SharedDataService) {
 
     $scope.ShareData = SharedDataService;
-    $scope.ShareData.Id_Csi
     var id = $routeParams.id;
 
     extCsiService.GetCSI(id).then(function (results) {
         $scope.csi = results.data;
+        $scope.ShareData.Id_Csi = $scope.csi.Id;
     }, function (error) {
-        //alert(error.data.message);
+        alert(error.data.message);
     });
 
 
@@ -67,11 +67,12 @@ app.controller("extCsiQCController", ['$scope', '$routeParams', 'extCsiQCService
             if (csiQC.isDeleted) {
                 $scope.csiQualityCriterias.splice(i, 1);
             }
-            // mark as not new
+            results.push(extCsiQCService.SaveCsiQC(csiQC));
+
+            // After update mark new row as not new
             if (csiQC.isNew) {
                 csiQC.isNew = false;
             }
-            results.push($http.post('/saveCsiQC', csiQC));
         }
         return $q.all(results);
     };
