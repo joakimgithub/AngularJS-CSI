@@ -98,7 +98,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAdmin = authData.isAdmin;
             _authentication.customerId = authData.customerId;
             _authentication.role = "";
-            if(authData.isAdmin === "True") _authentication.role = "(Admin)";
+            if(authData.isAdmin) _authentication.role = "(Admin)";
         }
 
     };
