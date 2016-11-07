@@ -17,6 +17,9 @@ app.controller("extCsiController", ['$scope', '$routeParams', 'extCsiService','S
 'use strict';
 app.controller("extCsiQCController", ['$scope', '$routeParams', 'extCsiQCService', 'SharedDataService', '$filter', '$http', '$q', function ($scope, $routeParams, extCsiQCService, SharedDataService, $filter, $http, $q) {
 
+    $scope.ShareData = SharedDataService;
+    var id = $routeParams.id;
+
      // filter csiQC to show
     $scope.filterCsiQC = function(csiQC) {
         return csiQC.isDeleted !== true;
@@ -73,6 +76,7 @@ app.controller("extCsiQCController", ['$scope', '$routeParams', 'extCsiQCService
         $scope.ShareData.totalIV = 0;
         $scope.ShareData.totalV5 = 0;
         $scope.ShareData.total = 0;
+
         angular.forEach($scope.csiQualityCriterias, function(csiQualityCriteria){
             // Passar på att sätt isNew till false
             csiQualityCriteria.isNew = false;
