@@ -1,5 +1,5 @@
 
-var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap']);
+var app = angular.module('CsiApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ui.bootstrap','xeditable']);
 
 
 var serviceBase = 'http://A01C01101C/CsiServiceWT/';

@@ -31,7 +31,14 @@ app.factory('extCsiQCService', ['$http', 'ngAuthSettings', function ($http, ngAu
         });
     };
 
+    var _SaveCsiQC = function (data) {
+        return $http.post(serviceBase + 'api/GetQualityCriteriaListForCSI/'+id).then(function (results) {
+            return results;
+        });
+    };
+
     extCsiQCServiceFactory.GetCSIQC = _GetCSIQC;
+    extCsiQCServiceFactory.SaveCsiQC = _SaveCsiQC;
 
     return extCsiQCServiceFactory;
 
@@ -42,8 +49,9 @@ app.factory('extCsiQCService', ['$http', 'ngAuthSettings', function ($http, ngAu
 app.service('SharedDataService', function () {
         'use strict';
         var ShareData = {
-                totalIV: 0,
-                totalV5: 0,
-                total: 0};
+            Id_Csi: null,
+            totalIV: 0,
+            totalV5: 0,
+            total: 0};
         return ShareData;
     })  // End SharedDataService
