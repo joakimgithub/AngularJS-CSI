@@ -1,13 +1,16 @@
-<form class="form-login" role="form">
-    <h2 class="form-login-heading">Edit user</h2>
-    <input type="text" class="form-control" placeholder="Username" data-ng-model="user.Email" required autofocus>
-    <input type="text" class="form-control" placeholder="First Name" data-ng-model="user.FirstName" required>
-    <input type="text" class="form-control" placeholder="Last Name" data-ng-model="user.LastName" required>
-    <select ng-model="user.CustomerId" class="form-control" required>
-        <option ng-repeat="x in lovCustomers" value="{{x.Id}}">{{x.CustomerName}}</option>
-    </select>
-    <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addUser()">Add</button>
-    <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
-        {{message}}
-    </div>
-</form>
+<div ng-controller="intUpdateUserController">
+    <form class="form-login" role="form">
+        <h2 class="form-login-heading">Edit user</h2>
+        <input type="text" class="form-control" placeholder="Username" ng-model="user.Email" required autofocus>
+        <input type="text" class="form-control" placeholder="First Name" ng-model="user.FirstName" required>
+        <input type="text" class="form-control" placeholder="Last Name" ng-model="user.LastName" required>
+
+        <select ng-model="user.CustomerId" class="form-control" required>
+            <option ng-repeat="x in lovCustomers" value="{{x.Id}}">{{x.CustomerName}}</option>
+        </select>
+        <button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="addUser()">Add</button>
+        <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+            {{message}}
+        </div>
+    </form>
+</div>

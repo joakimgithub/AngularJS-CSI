@@ -27,9 +27,9 @@ app.controller("intUserController", ['$scope', '$location', 'intUserService', 'i
     // ************************
     // Update user
     // ************************
-//    $scope.updateUser = function (theUser) {
-//        $location.path('/intUpdateUser/?' + theUser);
-//    };
+    $scope.updateUser = function (theUser) {
+        $location.path('/intUpdateUser/?' + theUser);
+    };
 
     // ************************
     // Delete user
