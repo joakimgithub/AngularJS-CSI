@@ -59,7 +59,7 @@ app.factory('intCSIListForCustomerService', ['$http', '$uibModal', 'ngAuthSettin
             };
 
         modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.post(serviceBase + 'api/AddCSI', csi).then(function (results) {
+            return $http.post(serviceBase + 'api/AddCSI', newCsi).then(function (results) {
                 return results;
             });
         });
