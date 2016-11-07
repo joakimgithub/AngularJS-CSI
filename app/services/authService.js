@@ -49,7 +49,11 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         $http.post(serviceBase + 'Token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: response.isAdmin = (response.isAdmin === "True" ? true : false), customerId: response.customerId});
+            var admin = false;
+            if(response.isAdmin === "True")
+               admin = true;
+
+            localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false, isAdmin: admin , customerId: response.customerId});
 
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
