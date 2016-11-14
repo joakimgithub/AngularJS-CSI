@@ -2,6 +2,11 @@
 app.controller("intCsiController", ['$scope', '$routeParams', 'intCsiService','SharedDataService', function ($scope, $routeParams, intCsiService, SharedDataService) {
 
     $scope.ShareData = SharedDataService;
+    $scope.ShareData.Id_Csi: null,
+    $scope.ShareData.totalIV: 0,
+    $scope.ShareData.totalV5: 0,
+    $scope.ShareData.total: 0
+
     var id = $routeParams.id;
 
     intCsiService.GetCSI(id).then(function (results) {
@@ -18,6 +23,7 @@ app.controller("intCsiController", ['$scope', '$routeParams', 'intCsiService','S
 app.controller("intCsiQCController", ['$scope', '$routeParams', 'intCsiQCService', 'SharedDataService', '$filter', '$http', '$q', function ($scope, $routeParams, intCsiQCService, SharedDataService, $filter, $http, $q) {
 
     $scope.ShareData = SharedDataService;
+
     var id = $routeParams.id;
 
      // filter csiQC to show
@@ -88,10 +94,6 @@ app.controller("intCsiQCController", ['$scope', '$routeParams', 'intCsiQCService
 
         return $q.all(results);
     };
-
-    $scope.ShareData = SharedDataService;
-
-    var id = 1;    //$routeParams.ID;
 
     intCsiQCService.GetCSIQC(id).then(function (results) {
         $scope.csiQualityCriterias = results.data;

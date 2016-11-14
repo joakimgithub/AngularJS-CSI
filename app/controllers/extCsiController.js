@@ -2,6 +2,11 @@
 app.controller("extCsiController", ['$scope', '$routeParams', 'extCsiService','SharedDataService', function ($scope, $routeParams, extCsiService, SharedDataService) {
 
     $scope.ShareData = SharedDataService;
+    $scope.ShareData.Id_Csi: null,
+    $scope.ShareData.totalIV: 0,
+    $scope.ShareData.totalV5: 0,
+    $scope.ShareData.total: 0
+
     var id = $routeParams.id;
 
     extCsiService.GetCSI(id).then(function (results) {
@@ -88,10 +93,6 @@ app.controller("extCsiQCController", ['$scope', '$routeParams', 'extCsiQCService
 
         return $q.all(results);
     };
-
-    $scope.ShareData = SharedDataService;
-
-    var id = 1;    //$routeParams.ID;
 
     extCsiQCService.GetCSIQC(id).then(function (results) {
         $scope.csiQualityCriterias = results.data;
