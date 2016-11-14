@@ -2,10 +2,10 @@
 app.controller("intCsiController", ['$scope', '$routeParams', 'intCsiService','SharedDataService', function ($scope, $routeParams, intCsiService, SharedDataService) {
 
     $scope.ShareData = SharedDataService;
-    $scope.ShareData.Id_Csi: null,
-    $scope.ShareData.totalIV: 0,
-    $scope.ShareData.totalV5: 0,
-    $scope.ShareData.total: 0
+    $scope.ShareData.Id_Csi = null;
+    $scope.ShareData.totalIV = 0;
+    $scope.ShareData.totalV5 = 0;
+    $scope.ShareData.total = 0;
 
     var id = $routeParams.id;
 
