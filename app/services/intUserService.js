@@ -1,16 +1,28 @@
-'use strict';
-app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$uibModal',
-                             function($http, ngAuthSettings, modalPopUpService, $uibModal) {
+/*global app*/
+app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '$uibModal', function ($http, ngAuthSettings, modalPopUpService, $uibModal) {
+    'use strict';
+    var serviceBase = ngAuthSettings.apiServiceBaseUri,
+        intUserServiceFactory = {};
 
-    var serviceBase = ngAuthSettings.apiServiceBaseUri;
-
-    var intUserServiceFactory = {};
+    var newEmptyUser = function () {
+        var User = {
+            Id: null,
+            UserName: null,
+            FirstName: null,
+            LastName: null,
+            Email: null,
+            CustomerId: null,
+            CustomerName: null,
+            IsAdmin: null
+        };
+        return User;
+    };
 
     // ************************
     // Get Users
     // ************************
-    var _getUserList = function() {
-        return $http.get(serviceBase + 'api/Account/UsersList').then(function(results) {
+    var _getUserList = function () {
+        return $http.get(serviceBase + 'api/Account/UsersList').then(function (results) {
             return results;
         });
     };
@@ -106,22 +118,6 @@ app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '
             });
         });
     };
-
-
-    var newEmptyUser = function () {
-        var User = {
-            Id: null,
-            UserName: null,
-            FirstName: null,
-            LastName: null,
-            Email: null,
-            CustomerId: null,
-            CustomerName: null,
-            IsAdmin: null
-        };
-        return User;
-    };
-
 
     intUserServiceFactory.getUserList = _getUserList;
     intUserServiceFactory.addUser = _addUser;

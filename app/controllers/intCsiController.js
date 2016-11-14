@@ -1,5 +1,6 @@
-'use strict';
-app.controller("intCsiController", ['$scope', '$routeParams', 'intCsiService','SharedDataService', function ($scope, $routeParams, intCsiService, SharedDataService) {
+/*global app,alert*/
+app.controller("intCsiController", ['$scope', '$routeParams', 'intCsiService', 'SharedDataService', function ($scope, $routeParams, intCsiService, SharedDataService) {
+    'use strict';
 
     $scope.ShareData = SharedDataService;
     $scope.ShareData.Id_Csi = null;
@@ -19,21 +20,19 @@ app.controller("intCsiController", ['$scope', '$routeParams', 'intCsiService','S
 
 }]);
 
-'use strict';
 app.controller("intCsiQCController", ['$scope', '$routeParams', 'intCsiQCService', 'SharedDataService', '$filter', '$http', '$q', function ($scope, $routeParams, intCsiQCService, SharedDataService, $filter, $http, $q) {
-
+    'use strict';
     $scope.ShareData = SharedDataService;
 
     var id = $routeParams.id;
 
      // filter csiQC to show
-    $scope.filterCsiQC = function(csiQC) {
+    $scope.filterCsiQC = function (csiQC) {
         return csiQC.isDeleted !== true;
     };
 
     // mark csiQC as deleted
-    $scope.deleteCsiQC = function(id) {
-        debugger
+    $scope.deleteCsiQC = function (id) {
         var filtered = $filter('filter')($scope.csiQualityCriterias, {Id: id});
         if (filtered.length) {
             filtered[0].isDeleted = true;
@@ -41,9 +40,9 @@ app.controller("intCsiQCController", ['$scope', '$routeParams', 'intCsiQCService
     };
 
     // add csiQC
-    $scope.addCsiQC = function() {
+    $scope.addCsiQC = function () {
         $scope.csiQualityCriterias.push({
-            Id: $scope.csiQualityCriterias.length+1,
+            Id: $scope.csiQualityCriterias.length + 1,
             Id_Csi: $scope.ShareData.Id_Csi,
             QualityCriteria: '',
             Importance: null,
@@ -53,7 +52,7 @@ app.controller("intCsiQCController", ['$scope', '$routeParams', 'intCsiQCService
     };
 
     // cancel all changes
-    $scope.cancel = function() {
+    $scope.cancel = function () {
         for (var i = $scope.csiQualityCriterias.length; i--;) {
             var csiQC = $scope.csiQualityCriterias[i];
             // undelete
