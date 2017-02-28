@@ -53,7 +53,7 @@ app.controller("extCsiQCController", ['$scope', '$routeParams', 'extCsiQCService
 
     // cancel all changes
     $scope.cancel = function () {
-        for (var i = $scope.csiQualityCriterias.length; i--) {
+        for (var i = $scope.csiQualityCriterias.length; i--;) {
             var csiQC = $scope.csiQualityCriterias[i];
             // undelete
             if (csiQC.isDeleted) {

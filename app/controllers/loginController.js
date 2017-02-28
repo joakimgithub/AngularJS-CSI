@@ -21,7 +21,10 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
                             $location.path('/extCSIListForCustomer');
                     },
                     function(err) {
-                        $scope.message = err.error_description;
+                        if(err == null || err.error_description == null)
+                            $scope.message = "Error in loginController WebCsi";
+                        else
+                            $scope.message = err.error_description;
                     }
                 );
         };
