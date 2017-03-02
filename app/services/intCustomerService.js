@@ -32,7 +32,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
-                actionButtonText: 'Copy Customer',
+                actionButtonText: 'Copy Company',
                 headerText: 'Make a copy of Customer: ' + customerToIns + '?',
                 bodyText: 'Are you sure you want to Copy this Customer?',
                 customer: newCustomer
@@ -61,7 +61,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
-                actionButtonText: 'Insert Customer',
+                actionButtonText: 'Create Company',
                 headerText: 'Insert',
                 bodyText: 'Are you sure you want to insert this Customer?',
                 customer: newCustomer
@@ -92,7 +92,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
-                actionButtonText: 'Update Customer',
+                actionButtonText: 'Update Company',
                 headerText: 'Update ' + customerToUpd + '?',
                 bodyText: 'Are you sure you want to update this Customer?',
                 customer: updateCustomer
@@ -122,7 +122,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
             },
             modalOptions = {
                 closeButtonText: 'Cancel',
-                actionButtonText: 'Delete Customer',
+                actionButtonText: 'Delete Company',
                 headerText: 'Delete ' + customerToDel + '?',
                 bodyText: 'Are you sure you want to delete this Customer?',
                 customer: customer
