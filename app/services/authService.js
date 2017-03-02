@@ -63,8 +63,10 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             if(response.isAdmin === "True")
             {
                 _authentication.isAdmin = true;
-                _authentication.role = "(Admin)";
+                _authentication.role = "(Account Manager)";
             }
+            else
+                _authentication.role = "(Customer)";
             deferred.resolve(response);
 
         }).error(function (err, status) {
@@ -98,7 +100,8 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             _authentication.isAdmin = authData.isAdmin;
             _authentication.customerId = authData.customerId;
             _authentication.role = "";
-            if(authData.isAdmin) _authentication.role = "(Admin)";
+            if(authData.isAdmin) _authentication.role = "(Account Manager)";
+            if(!authData.isAdmin) _authentication.role = "(Customer)";
         }
 
     };

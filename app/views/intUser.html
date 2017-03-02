@@ -21,7 +21,7 @@
     <table class="table table-hover">
         <tr class="bg-success">
             <th>
-                <a ng-click="sortBy = 'UserName'; sortDescending = !sortDescending">User Name</a>
+                <a ng-click="sortBy = 'UserName'; sortDescending = !sortDescending">User Name (Email)</a>
                 <span ng-show="sortBy == 'UserName' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'UserName' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
@@ -35,18 +35,20 @@
                 <span ng-show="sortBy == 'LastName' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'LastName' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
+<!--
             <th>
                 <a ng-click="sortBy = 'Email'; sortDescending = !sortDescending">Email</a>
                 <span ng-show="sortBy == 'Email' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'Email' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
+-->
             <th>
-                <a ng-click="sortBy = 'IsAdmin'; sortDescending = !sortDescending">Is Admin</a>
+                <a ng-click="sortBy = 'IsAdmin'; sortDescending = !sortDescending">Account Manager</a>
                 <span ng-show="sortBy == 'IsAdmin' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'IsAdmin' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
             <th>
-                <a ng-click="sortBy = 'CustomerId'; sortDescending = !sortDescending">Customer</a>
+                <a ng-click="sortBy = 'CustomerId'; sortDescending = !sortDescending">Company</a>
                 <span ng-show="sortBy == 'CustomerId' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'CustomerId' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
@@ -56,7 +58,7 @@
             <td ng-bind="user.UserName"></td>
             <td ng-bind="user.FirstName"></td>
             <td ng-bind="user.LastName"></td>
-            <td ng-bind="user.Email"></td>
+<!--            <td ng-bind="user.Email"></td>-->
             <td ng-bind="user.IsAdmin"></td>
             <td ng-bind="user.CustomerName"></td>
             <td>
