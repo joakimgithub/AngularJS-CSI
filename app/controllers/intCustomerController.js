@@ -1,7 +1,7 @@
 'use strict';
 app.controller('intCustomerController', ['$scope',  'intCustomerService', 'modalPopUpService', function ($scope, intCustomerService, modalPopUpService) {
 
-    $scope.pageTitle = 'Customers';
+    $scope.pageTitle = 'Company';
     $scope.customers = [];
 
     // ************************
