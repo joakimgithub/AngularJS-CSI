@@ -15,7 +15,6 @@ app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '
             CustomerName: null,
             IsAdmin: null
         };
-        return User;
     };
 
     // ************************
@@ -61,7 +60,18 @@ app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '
     // update User
     // ************************
     var _updateUser = function (User) {
-        var updateUser = {Id: User.Id, UserCode: User.UserCode, UserName: User.UserName, UserEmail: User.UserEmail, Active: User.Active};
+        var updateUser =
+            {
+                Id: User.Id,
+                UserName: User.UserName,
+                FirstName: User.FirstName,
+                LastName: User.LastName,
+                Email: User.Email,
+                CustomerId: User.CustomerId,
+                CustomerName: User.CustomerName,
+                IsAdmin: User.IsAdmin,
+                Active: User.Active
+            };
         var UserToUpd = User.Id + ' ' + User.UserCode,
 
             // ************************
@@ -78,7 +88,7 @@ app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '
                 actionButtonText: 'Update User',
                 headerText: 'Update ' + UserToUpd + '?',
                 bodyText: 'Are you sure you want to update this User?',
-                User: updateUser
+                user: updateUser
             };
 
         return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
@@ -106,11 +116,10 @@ app.factory('intUserService', ['$http', 'ngAuthSettings', 'modalPopUpService', '
             modalOptions = {
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Delete User',
-                headerText: 'Delete ' + user.UserName + '?',
-                bodyText: 'Are you sure you want to delete this User?',
+                headerText: user.UserName + ' will be deleted',
+                bodyText: 'Are you sure ?',
                 User: user
             };
-
 
         return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
             return $http.post(serviceBase + 'api/Account/DeleteUser', user).then(function (results) {

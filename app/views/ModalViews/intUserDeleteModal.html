@@ -9,6 +9,9 @@
 </div>
 <div class="modal-body">
   <p>{{modalOptions.bodyText}}</p>
+   <select ng-model="user.CustomerName" class="form-control" required>
+        <option ng-repeat="x in Customers" value="{{x.Id}}">{{x.CustomerName}}</option>
+    </select>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn"

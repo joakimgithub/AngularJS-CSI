@@ -9,7 +9,7 @@
 
     <div>
         <a class="pull-right" href="#/intSignup">Sign Up</a><br>
-        <a class="pull-right" href="#/intUserChangePassword">Change your password</a>
+<!--        <a class="pull-right" href="#/intUserChangePassword">Change your password</a>-->
     </div>
     <br><br>
     <div class="input-group">
@@ -62,7 +62,8 @@
             <td ng-bind="user.IsAdmin"></td>
             <td ng-bind="user.CustomerName"></td>
             <td>
-                <a ng-href="#/intUpdateUser/?theUser={{user}}">Edit</a>&nbsp;&nbsp;
+<!--                <a ng-href="#/intUpdateUser/?theUser={{user}}">Edit</a>&nbsp;&nbsp;-->
+                <a ng-click="updateUser(user)">Edit</a>&nbsp;&nbsp;
                 <a ng-click="deleteUser(user)">Del</a>&nbsp;&nbsp;
 <!--                <button type="button" class="btn-info btn-m" ng-click="updateUser(user)">Edit</button>-->
 <!--                <button type="button" class="btn-info btn-m" ng-click="deleteUser(user)">Del</button>-->

@@ -22,7 +22,7 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
         var customerToIns = customer.Id + ' ' + customer.CustomerCode,
 
         // ************************
-        // Modal for Customer copy
+        // Modal for Company copy
         // ************************
             modalDefaults = {
                 backdrop: true,
@@ -46,12 +46,12 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
     };
 
     // ************************
-    // Add Customer
+    // Add Company
     // ************************
     var _addCustomer = function () {
         var newCustomer = newEmptyCustomer(),
         // ************************
-        // Modal for Add Customer
+        // Modal for Add Company
         // ************************
             modalDefaults = {
                 backdrop: true,
@@ -75,14 +75,14 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
     };
 
     // ************************
-    // update Customer
+    // update Company
     // ************************
     var _updateCustomer = function (customer) {
         var updateCustomer = {Id: customer.Id, CustomerCode: customer.CustomerCode, CustomerName: customer.CustomerName, CustomerEmail: customer.CustomerEmail, Active: customer.Active};
-        var customerToUpd = customer.Id + ' ' + customer.CustomerCode,
 
+        var customerToUpd = customer.Id + ' ' + customer.CustomerCode,
             // ************************
-            // Modal for Customer update
+            // Modal for Company update
             // ************************
             modalDefaults = {
                 backdrop: true,
@@ -94,25 +94,25 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Update Company',
                 headerText: 'Update ' + customerToUpd + '?',
-                bodyText: 'Are you sure you want to update this Customer?',
+                bodyText: 'Are you sure you want to update this Company?',
                 customer: updateCustomer
             };
 
-        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
-            return $http.put(serviceBase + 'api/ModifyCustomer/' + updateCustomer.Id, updateCustomer).then(function (results) {
-                return results;
+            return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+                return $http.put(serviceBase + 'api/ModifyCustomer/' + updateCustomer.Id, updateCustomer).then(function (results) {
+                    return results;
+                });
             });
-        });
-    };
+        };
 
     // ************************
     // delete Customer
     // ************************
     var _deleteCustomer = function (customer) {
-        var customerToDel = customer.Id + ' ' + customer.CustomerCode,
+        var customerToDel = customer.CustomerName,
 
         // ************************
-        // Modal for Customer delete
+        // Modal for Company delete
         // ************************
             modalDefaults = {
                 backdrop: true,
@@ -123,8 +123,8 @@ app.factory('intCustomerService', ['$http', '$uibModal', 'ngAuthSettings', 'moda
             modalOptions = {
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Delete Company',
-                headerText: 'Delete ' + customerToDel + '?',
-                bodyText: 'Are you sure you want to delete this Customer?',
+                headerText: customerToDel + ' will be deleted',
+                bodyText: 'Are you sure ?',
                 customer: customer
             };
 

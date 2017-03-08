@@ -39,6 +39,16 @@
                 <span ng-show="sortBy == 'CustomerEmail' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
                 <span ng-show="sortBy == 'CustomerEmail' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
             </th>
+            <th>
+                <a ng-click="sortBy = 'CreatedBy'; sortDescending = !sortDescending">Created by</a>
+                <span ng-show="sortBy == 'CreatedBy' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'CreatedBy' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
+            <th>
+                <a ng-click="sortBy = 'UpdatedBy'; sortDescending = !sortDescending">Updated by</a>
+                <span ng-show="sortBy == 'UpdatedBy' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'UpdatedBy' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
             <th></th>
         </tr>
 
@@ -47,6 +57,8 @@
             <td ng-bind="customer.CustomerCode"></td>
             <td><a ng-href="#/intCSIListForCustomer/?id={{customer.Id}}" ng-bind="customer.CustomerName"></a></td>
             <td ng-bind="customer.CustomerEmail"></td>
+            <td ng-bind="customer.CreatedBy"></td>
+            <td ng-bind="customer.UpdatedBy"></td>
             <td align="right">
 <!--                <a ng-click="copyCustomer(customer)">Copy</a>&nbsp;&nbsp;-->
                 <a ng-click="updateCustomer(customer)">Edit</a>&nbsp;&nbsp;

@@ -1,6 +1,7 @@
 'use strict';
 app.controller('intUpdateUserController', ['$scope', '$routeParams', '$location', '$timeout', 'authService', 'intCustomerService', function ($scope, $routeParams, $location, $timeout, authService, intCustomerService) {
 
+    $scope.user2 = $routeParams.theUser;
     $scope.user = angular.fromJson($routeParams.theUser);
     $scope.savedSuccessfully = false;
     $scope.message = "";
@@ -10,7 +11,7 @@ app.controller('intUpdateUserController', ['$scope', '$routeParams', '$location'
     // Get all customers for a list of value
     // *******************************************
     intCustomerService.getCustomerList().then(function (results) {
-        $scope.lovCustomers = results.data;
+        $scope.Customers = results.data;
     }, function (error) {
         alert(error.data.message);
     });

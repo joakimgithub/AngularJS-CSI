@@ -3,7 +3,7 @@ This AngularJS service will be responsible for signing up new users, log-in/log-
 */
 
 'use strict';
-app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', function ($http, $q, localStorageService, ngAuthSettings) {
+app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSettings', 'modalPopUpService', function ($http, $q, localStorageService, ngAuthSettings, modalPopUpService) {
 
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
     var authServiceFactory = {};
@@ -25,9 +25,42 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     };
 
 
-    var _updateUser = function (user) {
-        return $http.post(serviceBase + 'api/Account/ModifyUser', user).then(function (response) {
-            return response;
+    var _updateUser = function (User) {
+        var updateUser =
+            {
+                Id: User.Id,
+                UserName: User.UserName,
+                FirstName: User.FirstName,
+                LastName: User.LastName,
+                Email: User.Email,
+                CustomerId: User.CustomerId,
+                CustomerName: User.CustomerName,
+                IsAdmin: User.IsAdmin,
+                Active: User.Active
+            };
+
+        var UserToUpd = User.Id + ' ' + User.UserCode,
+            // ************************
+            // Modal for User update
+            // ************************
+            modalDefaults = {
+                backdrop: true,
+                keyboard: true,
+                modalFade: true,
+                templateUrl: 'app/views/ModalViews/intUserUpdateModal.html'
+            },
+            modalOptions = {
+                closeButtonText: 'Cancel',
+                actionButtonText: 'Update User',
+                headerText: 'Update ' + UserToUpd + '?',
+                bodyText: 'Are you sure you want to update this User?',
+                user: updateUser
+        };
+
+        return modalPopUpService.showModal(modalDefaults, modalOptions).then(function (result) {
+            return $http.post(serviceBase + 'api/Account/ModifyUser', updateUser).then(function (response) {
+                return response;
+            });
         });
     };
 
