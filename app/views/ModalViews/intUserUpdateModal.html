@@ -14,7 +14,7 @@
             <input type="text" class="form-control" placeholder="First Name" ng-model="modalOptions.user.FirstName" required>
             <input type="text" class="form-control" placeholder="Last Name" ng-model="modalOptions.user.LastName" required>
 
-            <select ng-model="modalOptions.user.CustomerName" class="form-control" required>
+            <select ng-model="modalOptions.user.CustomerId" class="form-control" required>
                 <option ng-repeat="x in Customers" value="{{x.Id}}">{{x.CustomerName}}</option>
             </select>
             <BR></BR>
