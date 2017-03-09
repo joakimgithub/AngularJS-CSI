@@ -52,7 +52,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
             modalOptions = {
                 closeButtonText: 'Cancel',
                 actionButtonText: 'Update User',
-                headerText: 'Update ' + UserToUpd + '?',
+                headerText: 'Update user',
                 bodyText: 'Are you sure you want to update this User?',
                 user: updateUser
         };
